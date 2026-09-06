@@ -323,3 +323,70 @@ Phân công tài xế
         |
         v
 Thông báo khách hàng
+```
+B7: THIẾT KẾ FUCTIONAL REQUIREMENT - YÊU CẦU CHỨC NĂNG 
+
+
+## 1. Tổng quan
+
+Functional Requirements (FR) mô tả các chức năng mà hệ thống CAB cần cung cấp để đáp ứng các mục tiêu nghiệp vụ (Business Goals - BG).
+
+Hệ thống được xây dựng xoay quanh 05 quy trình nghiệp vụ trọng tâm:
+
+1. Đặt xe và phân công tài xế
+2. Thực hiện và theo dõi chuyến xe
+3. Tính cước và thanh toán
+4. Đánh giá chuyến xe
+5. Hoàn tất và cập nhật dữ liệu
+
+Mỗi Functional Requirement được liên kết với Business Goal tương ứng nhằm đảm bảo khả năng truy xuất từ mục tiêu nghiệp vụ đến chức năng hệ thống.
+
+---
+
+# 2. Functional Requirements
+
+## 2.1. Quy trình 1 - Đặt xe và phân công tài xế
+
+**Mục tiêu:** Tiếp nhận yêu cầu đặt xe, tìm kiếm tài xế phù hợp và thực hiện phân công tài xế.
+
+| Mã FR | Yêu cầu chức năng | Actor | BG |
+|---|---|---|---|
+| **FR01** | Hệ thống cho phép khách hàng nhập và gửi thông tin đặt xe gồm điểm đón, điểm đến và loại xe. | Khách hàng | BG01 |
+| **FR02** | Hệ thống kiểm tra tính hợp lệ của thông tin đặt xe trước khi tạo yêu cầu. | Hệ thống | BG01 |
+| **FR03** | Hệ thống cho phép tìm kiếm các tài xế phù hợp với yêu cầu đặt xe. | Hệ thống | BG02 |
+| **FR04** | Hệ thống gửi yêu cầu nhận chuyến đến tài xế phù hợp. | Hệ thống | BG02 |
+| **FR05** | Hệ thống cho phép tài xế chấp nhận hoặc từ chối yêu cầu chuyến xe. | Tài xế | BG02 |
+| **FR06** | Hệ thống tự động xử lý và tìm tài xế khác khi tài xế từ chối hoặc không phản hồi. | Hệ thống | BG02 |
+| **FR07** | Hệ thống xác nhận và lưu thông tin tài xế được phân công cho chuyến xe. | Hệ thống | BG02 |
+| **FR08** | Hệ thống thông báo kết quả phân công tài xế cho khách hàng. | Hệ thống | BG07 |
+
+### Luồng xử lý
+
+```text
+Khách hàng đặt xe
+        |
+        v
+Kiểm tra yêu cầu
+        |
+        v
+Tìm tài xế phù hợp
+        |
+        v
+Gửi yêu cầu nhận chuyến
+        |
+        v
+Tài xế phản hồi
+        |
+        +------ Từ chối/Không phản hồi
+        |                |
+        |                v
+        |       Tìm tài xế khác
+        |                |
+        +----------------+
+        |
+        v
+Phân công tài xế
+        |
+        v
+Thông báo khách hàng
+```
