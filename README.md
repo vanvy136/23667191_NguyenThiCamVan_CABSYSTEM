@@ -1,3 +1,4 @@
+# CAB System – Nền tảng đặt xe
 B1: XÁC ĐỊNH STAKEHOLDER
 Bảng dưới đây xác định các bên liên quan chính của dự án **CAB System – Nền tảng đặt xe**, bao gồm vai trò, mối quan tâm, nhu cầu đối với hệ thống và mức độ ảnh hưởng.
 
@@ -28,7 +29,7 @@ Stakeholder Matrix được sử dụng để phân loại các bên liên quan 
 |---|---|---|
 | **Power cao** | **KEEP SATISFIED**<br><br>Cơ quan quản lý / pháp lý | **MANAGE CLOSELY**<br><br>Ban giám đốc<br>Khách hàng<br>Tài xế<br>Nhân viên vận hành<br>Quản trị viên hệ thống |
 | **Power thấp** | **MONITOR**<br><br>Đội ngũ phát triển / kỹ thuật | **KEEP INFORMED**<br><br>CSKH<br>Kế toán / tài chính<br>Nhà cung cấp thanh toán<br>Nhà cung cấp thông báo |
-# CAB System – Nền tảng đặt xe
+
 
 B3: XÁC ĐỊNH YÊU CẦU KHÁCH HÀNG THÀNH MỤC TIÊU NGHIỆP VỤ BẰNG BG 
 ## Business Goals – Mục tiêu nghiệp vụ
