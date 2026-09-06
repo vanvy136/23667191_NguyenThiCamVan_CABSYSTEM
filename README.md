@@ -790,3 +790,7 @@ B14: BẢNG TRUY VẾT AC - ACCEPTANCE CRITERIA
 | UC17 | Theo dõi hoạt động vận hành | AC24 | Nhân viên vận hành xem được các chuyến xe và trạng thái đang hoạt động |
 | UC18 | Quản lý tài khoản và phân quyền | AC25 | Admin có thể quản lý tài khoản và phân quyền người dùng |
 | UC19 | Xem báo cáo thống kê | AC26 | Nhân viên/Admin xem được các báo cáo thống kê theo dữ liệu hệ thống |
+
+TỔNG QUY TRÌNH:
+
+BG - BR - BBA - FR - UC - AC
