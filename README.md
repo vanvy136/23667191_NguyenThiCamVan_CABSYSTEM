@@ -270,3 +270,110 @@ Trong đó:
 - **FR (Functional Requirement):** Hệ thống phải cung cấp chức năng gì?
 - **Use Case:** Actor tương tác với hệ thống như thế nào?
 - **Module:** Chức năng thuộc phân hệ nào của hệ thống?
+
+B6: MÔ HÌNH HÓA NGHIỆP VỤ BẰNG BUSINESS REQUIREMENTS
+## Xây dựng quy trình nghiệp vụ dựa trên Business Requirements
+
+### 1. Mục đích
+
+Quy trình nghiệp vụ của CAB System được xây dựng dựa trên các Business Requirements (BG) và Business Rules (BR) nhằm mô tả toàn bộ quá trình đặt và thực hiện chuyến xe.
+
+Quy trình bắt đầu từ khi khách hàng tạo yêu cầu đặt xe, hệ thống tìm kiếm và phân công tài xế, thực hiện chuyến đi, tính cước, thanh toán và kết thúc bằng việc đánh giá dịch vụ.
+
+### 2. Quy trình nghiệp vụ tổng quát
+
+```text
+Khách hàng
+    |
+    v
+Tạo yêu cầu đặt xe
+    |
+    v
+Kiểm tra thông tin đặt xe
+    |
+    v
+Tìm kiếm tài xế phù hợp
+    |
+    v
+Gửi yêu cầu nhận chuyến
+    |
+    v
+Tài xế phản hồi
+    |
+    +------------------------+
+    |                        |
+ Chấp nhận              Từ chối/
+    |                  Không phản hồi
+    v                        |
+Phân công tài xế             v
+    |                  Tìm tài xế khác
+    |                        |
+    +<-----------------------+
+    |
+    v
+Thông báo kết quả cho khách hàng
+    |
+    v
+Tài xế đến điểm đón
+    |
+    v
+Đón khách
+    |
+    v
+Thực hiện chuyến đi
+    |
+    v
+Hoàn thành chuyến
+    |
+    v
+Tính cước
+    |
+    v
+Thanh toán
+    |
+    +------------------------+
+    |                        |
+ Thành công              Thất bại
+    |                        |
+    v                        v
+Ghi nhận giao dịch      Thông báo lỗi
+    |                        |
+    |                        v
+    |                  Thực hiện lại
+    |                  theo chính sách
+    |                        |
+    +-----------+------------+
+                |
+                v
+        Khách hàng đánh giá
+                |
+                v
+        Cập nhật báo cáo
+                |
+                v
+        Kết thúc quy trình
+```
+### 3. Quy trình nghiệp vụ chi tiết
+
+| STT | Hoạt động nghiệp vụ | Actor | Business Requirement | Business Rule | Kết quả |
+|---:|---|---|---|---|---|
+| 1 | Tạo yêu cầu đặt xe | Khách hàng | BG01 | BR01 | Yêu cầu đặt xe được tạo |
+| 2 | Kiểm tra thông tin đặt xe | Hệ thống | BG01 | BR01 | Yêu cầu hợp lệ được tiếp tục xử lý |
+| 3 | Tìm kiếm tài xế phù hợp | Hệ thống | BG02 | BR02 | Xác định được tài xế phù hợp |
+| 4 | Gửi yêu cầu nhận chuyến | Hệ thống | BG02 | BR02 | Tài xế nhận được yêu cầu |
+| 5 | Phản hồi yêu cầu chuyến | Tài xế | BG02 | BR02 | Xác định trạng thái nhận hoặc từ chối |
+| 6 | Xử lý tài xế từ chối/không phản hồi | Hệ thống | BG02 | BR02 | Tiếp tục tìm tài xế khác |
+| 7 | Phân công tài xế | Hệ thống | BG02 | BR02 | Tài xế được phân công |
+| 8 | Thông báo kết quả phân công | Hệ thống | BG07 | BR07 | Khách hàng được thông báo |
+| 9 | Di chuyển đến điểm đón | Tài xế | BG03 | BR03 | Trạng thái chuyến được cập nhật |
+| 10 | Đón khách | Tài xế | BG03 | BR03 | Chuyến chuyển sang trạng thái đã đón khách |
+| 11 | Thực hiện chuyến đi | Tài xế | BG03 | BR03 | Chuyến đang được thực hiện |
+| 12 | Hoàn thành chuyến | Tài xế | BG03 | BR03 | Chuyến được ghi nhận hoàn thành |
+| 13 | Tính cước | Hệ thống | BG05 | BR05 | Xác định số tiền cần thanh toán |
+| 14 | Thực hiện thanh toán | Khách hàng | BG05 | BR05 | Yêu cầu thanh toán được xử lý |
+| 15 | Kiểm tra kết quả thanh toán | Hệ thống | BG05 | BR05 | Xác định giao dịch thành công/thất bại |
+| 16 | Xử lý thanh toán thất bại | Hệ thống | BG05 | BR05 | Thông báo lỗi và hỗ trợ thanh toán lại |
+| 17 | Ghi nhận giao dịch | Hệ thống | BG04 | BR04 | Giao dịch được lưu trữ |
+| 18 | Gửi thông báo hoàn thành | Hệ thống | BG07 | BR07 | Khách hàng nhận được thông báo |
+| 19 | Đánh giá chuyến đi | Khách hàng | BG13 | BR12 | Đánh giá được ghi nhận |
+| 20 | Cập nhật dữ liệu báo cáo | Hệ thống | BG12 | BR11 | Dữ liệu được cập nhật phục vụ báo cáo |
