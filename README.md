@@ -1,13 +1,18 @@
-STT	Stakeholder	Vai trò	Mối quan tâm / Mục tiêu	Nhu cầu đối với hệ thống	Mức độ ảnh hưởng
-1	Ban giám đốc / Chủ doanh nghiệp	Người quyết định và tài trợ dự án	Muốn hệ thống hoạt động ổn định, mở rộng được và mang lại hiệu quả kinh doanh	Báo cáo số lượng chuyến, doanh thu, tỷ lệ hoàn thành/hủy, hiệu quả tài xế; hệ thống có khả năng mở rộng	Cao
-2	Khách hàng	Người sử dụng dịch vụ đặt xe	Đặt xe nhanh, biết rõ trạng thái chuyến và thanh toán thuận tiện	Đăng ký/đăng nhập, quản lý thông tin, đặt xe, theo dõi tài xế, xem lịch sử, thanh toán, đánh giá	Cao
-3	Tài xế	Người nhận và thực hiện chuyến xe	Nhận chuyến phù hợp, cập nhật trạng thái và quản lý hoạt động	Đăng ký/được tạo tài khoản, quản lý hồ sơ, phương tiện, trạng thái hoạt động, nhận/từ chối chuyến, cập nhật trạng thái	Cao
-4	Nhân viên vận hành	Quản lý và hỗ trợ hoạt động đặt xe	Theo dõi và xử lý các chuyến xe, tài xế và sự cố	Quản lý khách hàng, tài xế, phương tiện, chuyến đi; theo dõi chuyến đang diễn ra; xử lý chuyến lỗi; tra cứu giao dịch	Cao
-5	Quản trị viên hệ thống (System Admin)	Quản trị hệ thống và phân quyền	Đảm bảo hệ thống an toàn, ổn định và kiểm soát truy cập	Quản lý tài khoản, phân quyền, cấu hình hệ thống, theo dõi nhật ký thao tác, bảo mật dữ liệu	Cao
-6	Nhà cung cấp dịch vụ thanh toán	Cung cấp cổng thanh toán điện tử	Giao dịch được xử lý chính xác và an toàn	Tiếp nhận yêu cầu thanh toán, trả kết quả giao dịch thành công/thất bại, hỗ trợ xử lý lại	Trung bình
-7	Nhà cung cấp dịch vụ thông báo	Cung cấp SMS/Email/Push Notification	Đảm bảo thông báo được gửi đến đúng đối tượng	Gửi thông báo đặt xe, tài xế nhận chuyến, tài xế đến, hoàn thành chuyến, kết quả thanh toán	Trung bình
-8	Bộ phận chăm sóc khách hàng / hỗ trợ	Tiếp nhận và xử lý yêu cầu hỗ trợ	Giải quyết khiếu nại, sự cố và thắc mắc của khách hàng	Tra cứu thông tin chuyến đi, lịch sử giao dịch, hỗ trợ các trường hợp chuyến lỗi/thanh toán lỗi	Trung bình
-9	Bộ phận kế toán / tài chính	Theo dõi doanh thu và giao dịch	Đảm bảo số liệu doanh thu, thanh toán chính xác	Tra cứu giao dịch, doanh thu, trạng thái thanh toán và đối soát	Trung bình
-10	Đội ngũ phát triển / kỹ thuật	Xây dựng và bảo trì hệ thống	Hệ thống dễ phát triển, bảo trì và mở rộng	Kiến trúc linh hoạt, các thành phần có thể mở rộng độc lập, triển khai tính năng từng phần	Trung bình
-11	Business Analyst (BA)	Phân tích và làm rõ yêu cầu	Đảm bảo yêu cầu nghiệp vụ được xác định đầy đủ, chính xác	Xác định phạm vi, stakeholder, quy trình, yêu cầu chức năng/phi chức năng, quy tắc nghiệp vụ và ngoại lệ	Cao
-12	Cơ quan quản lý / pháp lý	Giám sát việc tuân thủ quy định	Bảo vệ dữ liệu và tuân thủ các quy định liên quan	Hệ thống bảo mật, kiểm soát dữ liệu cá nhân, lưu vết thao tác và đáp ứng yêu cầu pháp lý	Thấp – Trung bình
+## 👥 Stakeholder
+
+Bảng dưới đây xác định các bên liên quan chính của dự án **CAB System – Nền tảng đặt xe**, bao gồm vai trò, mối quan tâm, nhu cầu đối với hệ thống và mức độ ảnh hưởng.
+
+| STT | Stakeholder | Vai trò | Mối quan tâm / Mục tiêu | Nhu cầu đối với hệ thống | Mức độ ảnh hưởng |
+|:---:|---|---|---|---|:---:|
+| **1** | **Ban giám đốc / Chủ doanh nghiệp** | Người quyết định và tài trợ dự án | Muốn hệ thống hoạt động ổn định, mở rộng được và mang lại hiệu quả kinh doanh | Báo cáo số lượng chuyến, doanh thu, tỷ lệ hoàn thành/hủy, hiệu quả tài xế; hệ thống có khả năng mở rộng | 🔴 **Cao** |
+| **2** | **Khách hàng** | Người sử dụng dịch vụ đặt xe | Đặt xe nhanh, biết rõ trạng thái chuyến và thanh toán thuận tiện | Đăng ký/đăng nhập, quản lý thông tin, đặt xe, theo dõi tài xế, xem lịch sử, thanh toán, đánh giá | 🔴 **Cao** |
+| **3** | **Tài xế** | Người nhận và thực hiện chuyến xe | Nhận chuyến phù hợp, cập nhật trạng thái và quản lý hoạt động | Đăng ký/được tạo tài khoản, quản lý hồ sơ, phương tiện, trạng thái hoạt động, nhận/từ chối chuyến, cập nhật trạng thái | 🔴 **Cao** |
+| **4** | **Nhân viên vận hành** | Quản lý và hỗ trợ hoạt động đặt xe | Theo dõi và xử lý các chuyến xe, tài xế và sự cố | Quản lý khách hàng, tài xế, phương tiện, chuyến đi; theo dõi chuyến đang diễn ra; xử lý chuyến lỗi; tra cứu giao dịch | 🔴 **Cao** |
+| **5** | **Quản trị viên hệ thống (System Admin)** | Quản trị hệ thống và phân quyền | Đảm bảo hệ thống an toàn, ổn định và kiểm soát truy cập | Quản lý tài khoản, phân quyền, cấu hình hệ thống, theo dõi nhật ký thao tác, bảo mật dữ liệu | 🔴 **Cao** |
+| **6** | **Nhà cung cấp dịch vụ thanh toán** | Cung cấp cổng thanh toán điện tử | Giao dịch được xử lý chính xác và an toàn | Tiếp nhận yêu cầu thanh toán, trả kết quả giao dịch thành công/thất bại, hỗ trợ xử lý lại | 🟠 **Trung bình** |
+| **7** | **Nhà cung cấp dịch vụ thông báo** | Cung cấp SMS/Email/Push Notification | Đảm bảo thông báo được gửi đến đúng đối tượng | Gửi thông báo đặt xe, tài xế nhận chuyến, tài xế đến, hoàn thành chuyến, kết quả thanh toán | 🟠 **Trung bình** |
+| **8** | **Bộ phận chăm sóc khách hàng / hỗ trợ** | Tiếp nhận và xử lý yêu cầu hỗ trợ | Giải quyết khiếu nại, sự cố và thắc mắc của khách hàng | Tra cứu thông tin chuyến đi, lịch sử giao dịch, hỗ trợ các trường hợp chuyến lỗi/thanh toán lỗi | 🟠 **Trung bình** |
+| **9** | **Bộ phận kế toán / tài chính** | Theo dõi doanh thu và giao dịch | Đảm bảo số liệu doanh thu, thanh toán chính xác | Tra cứu giao dịch, doanh thu, trạng thái thanh toán và đối soát | 🟠 **Trung bình** |
+| **10** | **Đội ngũ phát triển / kỹ thuật** | Xây dựng và bảo trì hệ thống | Hệ thống dễ phát triển, bảo trì và mở rộng | Kiến trúc linh hoạt, các thành phần có thể mở rộng độc lập, triển khai tính năng từng phần | 🟠 **Trung bình** |
+| **11** | **Business Analyst (BA)** | Phân tích và làm rõ yêu cầu | Đảm bảo yêu cầu nghiệp vụ được xác định đầy đủ, chính xác | Xác định phạm vi, stakeholder, quy trình, yêu cầu chức năng/phi chức năng, quy tắc nghiệp vụ và ngoại lệ | 🔴 **Cao** |
+| **12** | **Cơ quan quản lý / pháp lý** | Giám sát việc tuân thủ quy định | Bảo vệ dữ liệu và tuân thủ các quy định liên quan | Hệ thống bảo mật, kiểm soát dữ liệu cá nhân, lưu vết thao tác và đáp ứng yêu cầu pháp lý | 🟡 **Thấp – Trung bình** |
