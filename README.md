@@ -1,30 +1,129 @@
-## 👥 Stakeholder
-
 Bảng dưới đây xác định các bên liên quan chính của dự án **CAB System – Nền tảng đặt xe**, bao gồm vai trò, mối quan tâm, nhu cầu đối với hệ thống và mức độ ảnh hưởng.
 
 | STT | Stakeholder | Vai trò | Mối quan tâm / Mục tiêu | Nhu cầu đối với hệ thống | Mức độ ảnh hưởng |
 |:---:|---|---|---|---|:---:|
-| **1** | **Ban giám đốc / Chủ doanh nghiệp** | Người quyết định và tài trợ dự án | Muốn hệ thống hoạt động ổn định, mở rộng được và mang lại hiệu quả kinh doanh | Báo cáo số lượng chuyến, doanh thu, tỷ lệ hoàn thành/hủy, hiệu quả tài xế; hệ thống có khả năng mở rộng | 🔴 **Cao** |
-| **2** | **Khách hàng** | Người sử dụng dịch vụ đặt xe | Đặt xe nhanh, biết rõ trạng thái chuyến và thanh toán thuận tiện | Đăng ký/đăng nhập, quản lý thông tin, đặt xe, theo dõi tài xế, xem lịch sử, thanh toán, đánh giá | 🔴 **Cao** |
-| **3** | **Tài xế** | Người nhận và thực hiện chuyến xe | Nhận chuyến phù hợp, cập nhật trạng thái và quản lý hoạt động | Đăng ký/được tạo tài khoản, quản lý hồ sơ, phương tiện, trạng thái hoạt động, nhận/từ chối chuyến, cập nhật trạng thái | 🔴 **Cao** |
-| **4** | **Nhân viên vận hành** | Quản lý và hỗ trợ hoạt động đặt xe | Theo dõi và xử lý các chuyến xe, tài xế và sự cố | Quản lý khách hàng, tài xế, phương tiện, chuyến đi; theo dõi chuyến đang diễn ra; xử lý chuyến lỗi; tra cứu giao dịch | 🔴 **Cao** |
-| **5** | **Quản trị viên hệ thống (System Admin)** | Quản trị hệ thống và phân quyền | Đảm bảo hệ thống an toàn, ổn định và kiểm soát truy cập | Quản lý tài khoản, phân quyền, cấu hình hệ thống, theo dõi nhật ký thao tác, bảo mật dữ liệu | 🔴 **Cao** |
-| **6** | **Nhà cung cấp dịch vụ thanh toán** | Cung cấp cổng thanh toán điện tử | Giao dịch được xử lý chính xác và an toàn | Tiếp nhận yêu cầu thanh toán, trả kết quả giao dịch thành công/thất bại, hỗ trợ xử lý lại | 🟠 **Trung bình** |
-| **7** | **Nhà cung cấp dịch vụ thông báo** | Cung cấp SMS/Email/Push Notification | Đảm bảo thông báo được gửi đến đúng đối tượng | Gửi thông báo đặt xe, tài xế nhận chuyến, tài xế đến, hoàn thành chuyến, kết quả thanh toán | 🟠 **Trung bình** |
-| **8** | **Bộ phận chăm sóc khách hàng / hỗ trợ** | Tiếp nhận và xử lý yêu cầu hỗ trợ | Giải quyết khiếu nại, sự cố và thắc mắc của khách hàng | Tra cứu thông tin chuyến đi, lịch sử giao dịch, hỗ trợ các trường hợp chuyến lỗi/thanh toán lỗi | 🟠 **Trung bình** |
-| **9** | **Bộ phận kế toán / tài chính** | Theo dõi doanh thu và giao dịch | Đảm bảo số liệu doanh thu, thanh toán chính xác | Tra cứu giao dịch, doanh thu, trạng thái thanh toán và đối soát | 🟠 **Trung bình** |
-| **10** | **Đội ngũ phát triển / kỹ thuật** | Xây dựng và bảo trì hệ thống | Hệ thống dễ phát triển, bảo trì và mở rộng | Kiến trúc linh hoạt, các thành phần có thể mở rộng độc lập, triển khai tính năng từng phần | 🟠 **Trung bình** |
-| **11** | **Business Analyst (BA)** | Phân tích và làm rõ yêu cầu | Đảm bảo yêu cầu nghiệp vụ được xác định đầy đủ, chính xác | Xác định phạm vi, stakeholder, quy trình, yêu cầu chức năng/phi chức năng, quy tắc nghiệp vụ và ngoại lệ | 🔴 **Cao** |
-| **12** | **Cơ quan quản lý / pháp lý** | Giám sát việc tuân thủ quy định | Bảo vệ dữ liệu và tuân thủ các quy định liên quan | Hệ thống bảo mật, kiểm soát dữ liệu cá nhân, lưu vết thao tác và đáp ứng yêu cầu pháp lý | 🟡 **Thấp – Trung bình** |
+| **1** | **Ban giám đốc / Chủ doanh nghiệp** | Người quyết định và tài trợ dự án | Muốn hệ thống hoạt động ổn định, mở rộng được và mang lại hiệu quả kinh doanh | Báo cáo số lượng chuyến, doanh thu, tỷ lệ hoàn thành/hủy, hiệu quả tài xế; hệ thống có khả năng mở rộng | **Cao** |
+| **2** | **Khách hàng** | Người sử dụng dịch vụ đặt xe | Đặt xe nhanh, biết rõ trạng thái chuyến và thanh toán thuận tiện | Đăng ký/đăng nhập, quản lý thông tin, đặt xe, theo dõi tài xế, xem lịch sử, thanh toán, đánh giá | **Cao** |
+| **3** | **Tài xế** | Người nhận và thực hiện chuyến xe | Nhận chuyến phù hợp, cập nhật trạng thái và quản lý hoạt động | Đăng ký/được tạo tài khoản, quản lý hồ sơ, phương tiện, trạng thái hoạt động, nhận/từ chối chuyến, cập nhật trạng thái | **Cao** |
+| **4** | **Nhân viên vận hành** | Quản lý và hỗ trợ hoạt động đặt xe | Theo dõi và xử lý các chuyến xe, tài xế và sự cố | Quản lý khách hàng, tài xế, phương tiện, chuyến đi; theo dõi chuyến đang diễn ra; xử lý chuyến lỗi; tra cứu giao dịch | **Cao** |
+| **5** | **Quản trị viên hệ thống (System Admin)** | Quản trị hệ thống và phân quyền | Đảm bảo hệ thống an toàn, ổn định và kiểm soát truy cập | Quản lý tài khoản, phân quyền, cấu hình hệ thống, theo dõi nhật ký thao tác, bảo mật dữ liệu | **Cao** |
+| **6** | **Nhà cung cấp dịch vụ thanh toán** | Cung cấp cổng thanh toán điện tử | Giao dịch được xử lý chính xác và an toàn | Tiếp nhận yêu cầu thanh toán, trả kết quả giao dịch thành công/thất bại, hỗ trợ xử lý lại | **Trung bình** |
+| **7** | **Nhà cung cấp dịch vụ thông báo** | Cung cấp SMS/Email/Push Notification | Đảm bảo thông báo được gửi đến đúng đối tượng | Gửi thông báo đặt xe, tài xế nhận chuyến, tài xế đến, hoàn thành chuyến, kết quả thanh toán | **Trung bình** |
+| **8** | **Bộ phận chăm sóc khách hàng / hỗ trợ** | Tiếp nhận và xử lý yêu cầu hỗ trợ | Giải quyết khiếu nại, sự cố và thắc mắc của khách hàng | Tra cứu thông tin chuyến đi, lịch sử giao dịch, hỗ trợ các trường hợp chuyến lỗi/thanh toán lỗi | **Trung bình** |
+| **9** | **Bộ phận kế toán / tài chính** | Theo dõi doanh thu và giao dịch | Đảm bảo số liệu doanh thu, thanh toán chính xác | Tra cứu giao dịch, doanh thu, trạng thái thanh toán và đối soát | **Trung bình** |
+| **10** | **Đội ngũ phát triển / kỹ thuật** | Xây dựng và bảo trì hệ thống | Hệ thống dễ phát triển, bảo trì và mở rộng | Kiến trúc linh hoạt, các thành phần có thể mở rộng độc lập, triển khai tính năng từng phần | **Trung bình** |
+| **11** | **Business Analyst (BA)** | Phân tích và làm rõ yêu cầu | Đảm bảo yêu cầu nghiệp vụ được xác định đầy đủ, chính xác | Xác định phạm vi, stakeholder, quy trình, yêu cầu chức năng/phi chức năng, quy tắc nghiệp vụ và ngoại lệ | **Cao** |
+| **12** | **Cơ quan quản lý / pháp lý** | Giám sát việc tuân thủ quy định | Bảo vệ dữ liệu và tuân thủ các quy định liên quan | Hệ thống bảo mật, kiểm soát dữ liệu cá nhân, lưu vết thao tác và đáp ứng yêu cầu pháp lý | **Thấp – Trung bình** |
 
-## 📊 Stakeholder Matrix
+## Stakeholder Matrix
 
 Stakeholder Matrix được sử dụng để phân loại các bên liên quan dựa trên hai tiêu chí:
 
 - **Power:** Mức độ quyền lực / ảnh hưởng đến dự án.
 - **Interest:** Mức độ quan tâm đến hệ thống.
 
-|  | 🟡 **Interest thấp** | 🟢 **Interest cao** |
+|  | **Interest thấp** | **Interest cao** |
 |---|---|---|
-| 🔴 **Power cao** | **KEEP SATISFIED**<br><br>• Cơ quan quản lý / pháp lý | **MANAGE CLOSELY**<br><br>• Ban giám đốc<br>• Khách hàng<br>• Tài xế<br>• Nhân viên vận hành<br>• Quản trị viên hệ thống |
-| 🔵 **Power thấp** | **MONITOR**<br><br>• Đội ngũ phát triển / kỹ thuật | **KEEP INFORMED**<br><br>• CSKH<br>• Kế toán / tài chính<br>• Nhà cung cấp thanh toán<br>• Nhà cung cấp thông báo |
+| **Power cao** | **KEEP SATISFIED**<br><br>Cơ quan quản lý / pháp lý | **MANAGE CLOSELY**<br><br>Ban giám đốc<br>Khách hàng<br>Tài xế<br>Nhân viên vận hành<br>Quản trị viên hệ thống |
+| **Power thấp** | **MONITOR**<br><br>Đội ngũ phát triển / kỹ thuật | **KEEP INFORMED**<br><br>CSKH<br>Kế toán / tài chính<br>Nhà cung cấp thanh toán<br>Nhà cung cấp thông báo |
+# CAB System – Nền tảng đặt xe
+
+## Business Goals – Mục tiêu nghiệp vụ
+
+### 1. Tổng quan
+
+Từ yêu cầu của Công ty ABC, Business Analyst xác định các **Mục tiêu nghiệp vụ (Business Goals – BG)** nhằm làm rõ những kết quả mà doanh nghiệp mong muốn đạt được khi triển khai hệ thống CAB System.
+
+Các mục tiêu này là cơ sở để tiếp tục xác định:
+
+> **Business Goal → Business Requirement → Functional Requirement → Use Case → System Solution**
+
+---
+
+### 2. Danh sách mục tiêu nghiệp vụ
+
+| Mã BG | Mục tiêu nghiệp vụ | Kết quả kỳ vọng |
+|:---:|---|---|
+| **BG01** | **Xây dựng nền tảng đặt xe trực tuyến tập trung** | Khách hàng có thể thực hiện toàn bộ quy trình đặt xe trên một nền tảng thống nhất. |
+| **BG02** | **Nâng cao hiệu quả phân công tài xế** | Tự động tìm và ưu tiên tài xế phù hợp, gần khách hàng, giảm thời gian phân công. |
+| **BG03** | **Cải thiện trải nghiệm đặt và theo dõi chuyến đi** | Khách hàng biết trạng thái đặt xe, tài xế nhận chuyến và thời gian dự kiến đến. |
+| **BG04** | **Quản lý tập trung thông tin chuyến đi và giao dịch** | Doanh nghiệp có dữ liệu đầy đủ về chuyến đi, thanh toán và lịch sử giao dịch. |
+| **BG05** | **Đảm bảo quá trình thực hiện chuyến xe được kiểm soát** | Theo dõi được tiến trình từ khi tài xế nhận chuyến đến khi hoàn thành. |
+| **BG06** | **Đảm bảo tính cước và thanh toán thuận tiện, an toàn** | Tính đúng cước, hỗ trợ tiền mặt và thanh toán điện tử, hạn chế rủi ro bảo mật. |
+| **BG07** | **Nâng cao hiệu quả thông báo và phối hợp** | Khách hàng, tài xế và nhân viên nhận được thông tin kịp thời. |
+| **BG08** | **Nâng cao hiệu quả quản lý và vận hành** | Nhân viên có công cụ tập trung để giám sát và xử lý các vấn đề phát sinh. |
+| **BG09** | **Tăng cường bảo mật và kiểm soát hệ thống** | Dữ liệu được bảo vệ, quyền truy cập được kiểm soát và các thao tác quan trọng được lưu vết. |
+| **BG10** | **Đảm bảo hệ thống hoạt động ổn định khi nhu cầu tăng cao** | Hệ thống duy trì hoạt động ổn định trong các thời điểm cao điểm. |
+| **BG11** | **Nâng cao khả năng mở rộng và phát triển hệ thống** | Có thể bổ sung dịch vụ, phương thức thanh toán và kênh thông báo mới mà không phải xây dựng lại toàn bộ hệ thống. |
+| **BG12** | **Hỗ trợ quản lý và ra quyết định dựa trên dữ liệu** | Ban lãnh đạo có báo cáo về số lượng chuyến, doanh thu, tỷ lệ hoàn thành, tỷ lệ hủy và hiệu quả tài xế. |
+| **BG13** | **Nâng cao chất lượng dịch vụ thông qua phản hồi khách hàng** | Doanh nghiệp sử dụng đánh giá của khách hàng để theo dõi và cải thiện chất lượng dịch vụ. |
+| **BG14** | **Chuẩn hóa quy trình và chính sách vận hành** | Xác định rõ cách tính cước, ưu tiên tài xế, thời gian phản hồi, hủy chuyến, mất kết nối và lưu trữ dữ liệu. |
+
+---
+
+## 3. Phân nhóm Business Goals
+
+| Nhóm | Business Goals | Trọng tâm |
+|---|---|---|
+| **Dịch vụ đặt xe** | BG01, BG02, BG03, BG05, BG13 | Cải thiện trải nghiệm khách hàng và hiệu quả chuyến xe |
+| **Tài chính và vận hành** | BG04, BG06, BG08, BG12 | Quản lý giao dịch, vận hành và doanh thu |
+| **An toàn và ổn định** | BG07, BG09, BG10 | Bảo mật, thông báo và tính ổn định |
+| **Phát triển lâu dài** | BG11, BG14 | Khả năng mở rộng và chuẩn hóa nghiệp vụ |
+
+---
+
+## 4. Business Goals trọng tâm
+
+### BG01 – Xây dựng nền tảng đặt xe trực tuyến tập trung
+
+Xây dựng một nền tảng đặt xe trực tuyến giúp khách hàng thực hiện quy trình đặt xe thuận tiện và thống nhất.
+
+### BG02 – Nâng cao hiệu quả phân công tài xế
+
+Tự động xác định tài xế phù hợp dựa trên vị trí, trạng thái sẵn sàng và các tiêu chí vận hành.
+
+### BG03 – Cải thiện trải nghiệm theo dõi chuyến đi
+
+Cho phép khách hàng theo dõi quá trình xử lý yêu cầu và trạng thái hiện tại của chuyến xe.
+
+### BG06 – Đảm bảo thanh toán thuận tiện và an toàn
+
+Hỗ trợ nhiều phương thức thanh toán và tích hợp với nhà cung cấp thanh toán bên ngoài mà không lưu trực tiếp thông tin nhạy cảm.
+
+### BG08 – Nâng cao hiệu quả quản lý và vận hành
+
+Cung cấp giao diện quản trị giúp nhân viên theo dõi khách hàng, tài xế, phương tiện và chuyến đi.
+
+### BG09 – Tăng cường bảo mật và kiểm soát hệ thống
+
+Đảm bảo xác thực, phân quyền, bảo vệ dữ liệu cá nhân, dữ liệu vị trí và dữ liệu giao dịch.
+
+### BG10 – Đảm bảo tính ổn định của hệ thống
+
+Đảm bảo hệ thống có thể hoạt động ổn định khi số lượng khách hàng và tài xế tăng cao.
+
+### BG11 – Đảm bảo khả năng mở rộng
+
+Cho phép doanh nghiệp bổ sung các loại dịch vụ, phương thức thanh toán, kênh thông báo và các thành phần kỹ thuật mới trong tương lai.
+
+---
+
+## 5. Mối quan hệ giữa Business Goal và yêu cầu hệ thống
+
+```text
+YÊU CẦU KHÁCH HÀNG
+        |
+        v
+BUSINESS GOAL (BG)
+        |
+        v
+BUSINESS REQUIREMENT (BR)
+        |
+        v
+FUNCTIONAL REQUIREMENT (FR)
+        |
+        v
+USE CASE
+        |
+        v
+GIẢI PHÁP CAB SYSTEM
