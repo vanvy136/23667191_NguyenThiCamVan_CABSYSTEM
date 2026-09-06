@@ -349,44 +349,444 @@ Mỗi Functional Requirement được liên kết với Business Goal tương �
 
 **Mục tiêu:** Tiếp nhận yêu cầu đặt xe, tìm kiếm tài xế phù hợp và thực hiện phân công tài xế.
 
-| Mã FR | Yêu cầu chức năng | Actor | BG |
-|---|---|---|---|
-| **FR01** | Hệ thống cho phép khách hàng nhập và gửi thông tin đặt xe gồm điểm đón, điểm đến và loại xe. | Khách hàng | BG01 |
-| **FR02** | Hệ thống kiểm tra tính hợp lệ của thông tin đặt xe trước khi tạo yêu cầu. | Hệ thống | BG01 |
-| **FR03** | Hệ thống cho phép tìm kiếm các tài xế phù hợp với yêu cầu đặt xe. | Hệ thống | BG02 |
-| **FR04** | Hệ thống gửi yêu cầu nhận chuyến đến tài xế phù hợp. | Hệ thống | BG02 |
-| **FR05** | Hệ thống cho phép tài xế chấp nhận hoặc từ chối yêu cầu chuyến xe. | Tài xế | BG02 |
-| **FR06** | Hệ thống tự động xử lý và tìm tài xế khác khi tài xế từ chối hoặc không phản hồi. | Hệ thống | BG02 |
-| **FR07** | Hệ thống xác nhận và lưu thông tin tài xế được phân công cho chuyến xe. | Hệ thống | BG02 |
-| **FR08** | Hệ thống thông báo kết quả phân công tài xế cho khách hàng. | Hệ thống | BG07 |
+# B3. FUNCTIONAL REQUIREMENTS (FR)
 
-### Luồng xử lý
+## 1. Đặt xe và phân công tài xế
+
+| Mã FR | Chức năng | BG |
+|---|---|---|
+| FR01 | Đặt xe | BG01 |
+| FR02 | Kiểm tra thông tin đặt xe | BG01 |
+| FR03 | Tìm kiếm tài xế phù hợp | BG02 |
+| FR04 | Gửi yêu cầu nhận chuyến | BG02 |
+| FR05 | Chấp nhận / từ chối chuyến | BG02 |
+| FR06 | Xử lý tài xế từ chối / không phản hồi | BG02 |
+| FR07 | Phân công tài xế | BG02 |
+| FR08 | Thông báo kết quả phân công | BG07 |
+
+---
+
+## 2. Thực hiện và theo dõi chuyến xe
+
+| Mã FR | Chức năng | BG |
+|---|---|---|
+| FR09 | Xem thông tin chuyến xe | BG03 |
+| FR10 | Cập nhật trạng thái đã đến điểm đón | BG03 |
+| FR11 | Cập nhật trạng thái bắt đầu chuyến | BG03 |
+| FR12 | Cập nhật trạng thái đang thực hiện chuyến | BG03 |
+| FR13 | Theo dõi trạng thái chuyến xe | BG03 |
+| FR14 | Cập nhật trạng thái hoàn thành chuyến | BG03 |
+| FR15 | Lưu trạng thái chuyến xe | BG04 |
+
+---
+
+## 3. Tính cước và thanh toán
+
+| Mã FR | Chức năng | BG |
+|---|---|---|
+| FR16 | Xác định thông tin chuyến xe | BG05 |
+| FR17 | Tính cước chuyến xe | BG05 |
+| FR18 | Hiển thị cước phí | BG05 |
+| FR19 | Chọn phương thức thanh toán | BG05 |
+| FR20 | Thực hiện thanh toán | BG05 |
+| FR21 | Kiểm tra kết quả thanh toán | BG05 |
+| FR22 | Xử lý thanh toán thất bại / thanh toán lại | BG05 |
+| FR23 | Ghi nhận giao dịch thanh toán | BG04 |
+
+---
+
+## 4. Đánh giá chuyến xe
+
+| Mã FR | Chức năng | BG |
+|---|---|---|
+| FR24 | Hiển thị chức năng đánh giá | BG12 |
+| FR25 | Đánh giá tài xế / chuyến xe | BG12 |
+| FR26 | Gửi nhận xét | BG12 |
+| FR27 | Lưu đánh giá | BG12 |
+| FR28 | Cập nhật dữ liệu đánh giá | BG12 |
+
+---
+
+## 5. Hoàn tất và cập nhật dữ liệu
+
+| Mã FR | Chức năng | BG |
+|---|---|---|
+| FR29 | Kiểm tra trạng thái chuyến xe | BG04 |
+| FR30 | Kiểm tra trạng thái thanh toán | BG05 |
+| FR31 | Lưu lịch sử chuyến xe | BG04 |
+| FR32 | Lưu thông tin giao dịch | BG04 |
+| FR33 | Cập nhật trạng thái tài xế | BG06 |
+| FR34 | Cập nhật dữ liệu thống kê, báo cáo | BG11 |
+| FR35 | Hoàn tất chuyến xe | BG06 |
+
+---
+
+## Tổng hợp
+
+| Quy trình | Số chức năng |
+|---|---:|
+| Đặt xe và phân công tài xế | 8 |
+| Thực hiện và theo dõi chuyến xe | 7 |
+| Tính cước và thanh toán | 8 |
+| Đánh giá chuyến xe | 5 |
+| Hoàn tất và cập nhật dữ liệu | 7 |
+| **Tổng cộng** | **35** |
+
+B8: BUSINESS RULE - QUY ĐINH NGHIỆP VỤ
+
+Quy định nghiệp vụ xác định các nguyên tắc và điều kiện mà hệ thống CAB phải tuân thủ trong quá trình xử lý đặt xe, thực hiện chuyến, thanh toán và hoàn tất chuyến xe.
+
+---
+
+## 1. Quy định đặt xe và phân công tài xế
+
+| Mã BR | Quy định nghiệp vụ |
+|---|---|
+| BR01 | Khách hàng phải cung cấp đầy đủ thông tin điểm đón, điểm đến và loại xe khi đặt xe. |
+| BR02 | Hệ thống chỉ tiếp nhận yêu cầu đặt xe khi thông tin đặt xe hợp lệ. |
+| BR03 | Tài xế được phân công phải phù hợp với yêu cầu chuyến xe và đang ở trạng thái có thể nhận chuyến. |
+| BR04 | Tài xế có quyền chấp nhận hoặc từ chối yêu cầu chuyến xe. |
+| BR05 | Khi tài xế từ chối hoặc không phản hồi, hệ thống tiếp tục tìm tài xế phù hợp khác. |
+| BR06 | Một chuyến xe chỉ được phân công cho một tài xế tại một thời điểm. |
+| BR07 | Khi tìm được tài xế, hệ thống phải thông báo kết quả phân công cho khách hàng. |
+| BR08 | Nếu không tìm được tài xế phù hợp, hệ thống phải thông báo cho khách hàng. |
+
+---
+
+## 2. Quy định thực hiện và theo dõi chuyến xe
+
+| Mã BR | Quy định nghiệp vụ |
+|---|---|
+| BR09 | Tài xế chỉ được thực hiện chuyến xe khi đã được hệ thống phân công. |
+| BR10 | Trạng thái chuyến xe phải được cập nhật theo đúng trình tự nghiệp vụ. |
+| BR11 | Tài xế phải cập nhật trạng thái khi đến điểm đón. |
+| BR12 | Chuyến xe chỉ được chuyển sang trạng thái đang thực hiện sau khi tài xế đón khách. |
+| BR13 | Chuyến xe chỉ được chuyển sang trạng thái hoàn thành khi tài xế kết thúc chuyến. |
+| BR14 | Khách hàng chỉ được theo dõi các chuyến xe thuộc tài khoản của mình. |
+| BR15 | Hệ thống phải lưu lịch sử thay đổi trạng thái của chuyến xe. |
+
+---
+
+## 3. Quy định tính cước và thanh toán
+
+| Mã BR | Quy định nghiệp vụ |
+|---|---|
+| BR16 | Cước phí được tính dựa trên thông tin của chuyến xe theo chính sách tính cước của hệ thống. |
+| BR17 | Hệ thống phải hiển thị số tiền cần thanh toán trước khi thực hiện thanh toán. |
+| BR18 | Khách hàng phải lựa chọn một phương thức thanh toán hợp lệ. |
+| BR19 | Hệ thống phải ghi nhận kết quả của mỗi giao dịch thanh toán. |
+| BR20 | Giao dịch thanh toán thành công phải được cập nhật trạng thái thành công. |
+| BR21 | Khi thanh toán thất bại, hệ thống phải thông báo cho khách hàng. |
+| BR22 | Khách hàng có thể thực hiện thanh toán lại theo chính sách của hệ thống. |
+| BR23 | Thông tin nhạy cảm của phương thức thanh toán không được lưu trực tiếp trên hệ thống CAB. |
+| BR24 | Thông tin giao dịch phải được lưu để phục vụ tra cứu và quản lý. |
+
+---
+
+## 4. Quy định đánh giá chuyến xe
+
+| Mã BR | Quy định nghiệp vụ |
+|---|---|
+| BR25 | Khách hàng chỉ được đánh giá sau khi chuyến xe hoàn thành. |
+| BR26 | Mỗi chuyến xe chỉ được đánh giá theo chính sách đánh giá của hệ thống. |
+| BR27 | Đánh giá phải thuộc về đúng chuyến xe và khách hàng thực hiện chuyến. |
+| BR28 | Hệ thống phải lưu thông tin đánh giá sau khi khách hàng gửi đánh giá. |
+| BR29 | Dữ liệu đánh giá được sử dụng để theo dõi chất lượng phục vụ của tài xế. |
+
+---
+
+## 5. Quy định hoàn tất và cập nhật dữ liệu
+
+| Mã BR | Quy định nghiệp vụ |
+|---|---|
+| BR30 | Chuyến xe chỉ được hoàn tất khi trạng thái chuyến xe đã được cập nhật hoàn thành. |
+| BR31 | Hệ thống phải kiểm tra trạng thái thanh toán trước khi hoàn tất dữ liệu chuyến xe. |
+| BR32 | Thông tin chuyến xe phải được lưu vào lịch sử sau khi hoàn tất. |
+| BR33 | Thông tin giao dịch phải được lưu và liên kết với chuyến xe tương ứng. |
+| BR34 | Sau khi chuyến xe kết thúc, trạng thái tài xế phải được cập nhật để có thể nhận chuyến mới. |
+| BR35 | Dữ liệu chuyến xe và giao dịch phải được cập nhật vào dữ liệu thống kê, báo cáo. |
+
+---
+
+# Tổng hợp quy định nghiệp vụ
+
+| Quy trình | Phạm vi BR | Số lượng |
+|---|---|---:|
+| Đặt xe và phân công tài xế | BR01 - BR08 | 8 |
+| Thực hiện và theo dõi chuyến xe | BR09 - BR15 | 7 |
+| Tính cước và thanh toán | BR16 - BR24 | 9 |
+| Đánh giá chuyến xe | BR25 - BR29 | 5 |
+| Hoàn tất và cập nhật dữ liệu | BR30 - BR35 | 6 |
+| **Tổng cộng** | **BR01 - BR35** | **35** |
+
+---
+
+# Liên kết giữa BG - FR - BR
 
 ```text
-Khách hàng đặt xe
+Business Goal (BG)
         |
         v
-Kiểm tra yêu cầu
+Functional Requirement (FR)
         |
         v
-Tìm tài xế phù hợp
+Business Rule (BR)
         |
         v
-Gửi yêu cầu nhận chuyến
+Use Case (UC)
         |
         v
-Tài xế phản hồi
-        |
-        +------ Từ chối/Không phản hồi
-        |                |
-        |                v
-        |       Tìm tài xế khác
-        |                |
-        +----------------+
-        |
-        v
-Phân công tài xế
-        |
-        v
-Thông báo khách hàng
+System Function
 ```
+B9: NGHIỆP VỤ PHI CHỨC NĂNG - NON-FUNCTIONAL REQUIREMENTS (NFR)
+
+Các yêu cầu phi chức năng xác định các tiêu chí về chất lượng, hiệu năng, bảo mật, ổn định và khả năng mở rộng của hệ thống CAB.
+
+| Mã NFR | Nhóm | Yêu cầu phi chức năng | BG |
+|---|---|---|---|
+| NFR01 | Hiệu năng | Hệ thống phải phản hồi nhanh đối với các thao tác đặt xe và theo dõi chuyến. | BG09 |
+| NFR02 | Khả năng chịu tải | Hệ thống phải hoạt động ổn định khi số lượng người dùng và yêu cầu đặt xe tăng cao. | BG09 |
+| NFR03 | Tính sẵn sàng | Lỗi của một thành phần như thanh toán hoặc thông báo không được làm dừng toàn bộ quá trình đặt xe. | BG09 |
+| NFR04 | Bảo mật | Hệ thống phải xác thực người dùng trước khi truy cập các chức năng yêu cầu đăng nhập. | BG08 |
+| NFR05 | Phân quyền | Hệ thống phải kiểm soát quyền truy cập theo vai trò của người dùng. | BG08 |
+| NFR06 | Bảo vệ dữ liệu | Thông tin cá nhân, thông tin phương tiện, vị trí và giao dịch phải được bảo vệ. | BG08 |
+| NFR07 | Ghi nhật ký | Hệ thống phải ghi nhận các thao tác quan trọng để phục vụ kiểm tra và truy vết. | BG08 |
+| NFR08 | Khả năng mở rộng | Hệ thống phải cho phép mở rộng thêm dịch vụ, phương thức thanh toán và kênh thông báo. | BG10 |
+| NFR09 | Khả năng bảo trì | Các thành phần của hệ thống nên được thiết kế độc lập để thuận tiện bảo trì và nâng cấp. | BG10 |
+| NFR10 | Triển khai | Hệ thống phải hỗ trợ triển khai từng phần với ảnh hưởng tối thiểu đến hoạt động hiện tại. | BG10 |
+| NFR11 | Khả năng phục hồi | Hệ thống phải có khả năng xử lý lỗi của các thành phần bên ngoài mà không làm mất dữ liệu chuyến xe. | BG09 |
+| NFR12 | Audit | Các thao tác quản trị và thao tác quan trọng phải được lưu vết. | BG08 |
+B10: THIẾT KẾ MÔ HÌNH THỰC THỂ KẾT HỢP 
+
+                         +----------------+
+                         |    ACCOUNT     |
+                         +-------+--------+
+                                 |
+                    +------------+------------+
+                    |                         |
+                    v                         v
+             +-------------+           +-------------+
+             |  CUSTOMER   |           |    DRIVER   |
+             +------+------+           +------+------+
+                    |                          |
+                    |                          v
+                    |                   +-------------+
+                    |                   |   VEHICLE   |
+                    |                   +------+------+
+                    |                          |
+                    v                          |
+             +-------------+                   |
+             |   BOOKING   |-------------------+
+             +------+------+                   |
+                    |                          |
+                    +------------+-------------+
+                                 |
+                                 v
+                          +-------------+
+                          |     TRIP    |
+                          +------+------+ 
+                                 |
+                    +------------+------------+
+                    |                         |
+                    v                         v
+             +-------------+           +-------------+
+             |   PAYMENT   |           |   RATING    |
+             +-------------+           +-------------+
+      
+
+
+B11: ERD
++------------------+
+|     ACCOUNT      |
++------------------+
+| PK AccountID     |
+| Username         |
+| Password         |
+| Role             |
+| Status           |
++--------+---------+
+         |
+         | 1
+         |
+    +----+----+
+    |         |
+    |         |
+    N         N
+    |         |
++---v----+ +--v-------+
+|CUSTOMER| |  DRIVER  |
++--------+ +----------+
+|PK CustomerID| |PK DriverID|
+|FK AccountID | |FK AccountID|
+|FullName     | |FullName    |
+|Phone        | |Phone       |
+|Email        | |LicenseNo   |
+|Address      | |Status      |
++-----+-------+ |Location    |
+      |         +-----+------+
+      |               |
+      | 1             | 1
+      |               |
+      | N             | N
++-----v-------+  +----v-------+
+|   BOOKING   |  |  VEHICLE   |
++-------------+  +------------+
+|PK BookingID |  |PK VehicleID|
+|FK CustomerID|  |FK DriverID |
+|Pickup       |  |LicensePlate|
+|Destination  |  |VehicleType |
+|VehicleType  |  |Brand       |
+|BookingTime  |  |Status      |
+|Status       |  +-----+------+
++------+------+        |
+       |               |
+       | 1             | 1
+       |               |
+       | 0..1          | N
+       |               |
+       +-------+-------+
+               |
+               v
+        +-------------+
+        |     TRIP    |
+        +-------------+
+        |PK TripID    |
+        |FK BookingID |
+        |FK DriverID  |
+        |FK VehicleID |
+        |StartTime    |
+        |EndTime      |
+        |Fare         |
+        |Status       |
+        +------+------+ 
+               |
+          +----+----+
+          |         |
+          |         |
+          v         v
++----------------+ +----------------+
+|    PAYMENT     | |     RATING     |
++----------------+ +----------------+
+|PK PaymentID    | |PK RatingID     |
+|FK TripID       | |FK TripID       |
+|PaymentMethod   | |FK CustomerID   |
+|Amount          | |FK DriverID     |
+|PaymentTime     | |Score           |
+|Status          | |Comment         |
+|TransactionCode | |RatingTime      |
++----------------+ +----------------+
+
+
+B12: USE CASE
+DANH SÁCH USE CASE
+
+| Mã UC | Tên Use Case | Actor chính |
+|---|---|---|
+| **UC01** | Đăng nhập | Khách hàng, Tài xế, Nhân viên vận hành, Admin |
+| **UC02** | Quản lý thông tin cá nhân | Khách hàng, Tài xế |
+| **UC03** | Đặt xe | Khách hàng |
+| **UC04** | Tìm kiếm tài xế phù hợp | Hệ thống |
+| **UC05** | Phân công tài xế | Hệ thống |
+| **UC06** | Nhận / từ chối chuyến | Tài xế |
+| **UC07** | Thực hiện chuyến xe | Tài xế |
+| **UC08** | Theo dõi chuyến xe | Khách hàng |
+| **UC09** | Tính cước chuyến xe | Hệ thống |
+| **UC10** | Thanh toán chuyến xe | Khách hàng, Payment Gateway |
+| **UC11** | Xử lý thanh toán thất bại | Hệ thống, Payment Gateway |
+| **UC12** | Đánh giá chuyến xe | Khách hàng |
+| **UC13** | Hoàn tất chuyến xe | Tài xế, Hệ thống |
+| **UC14** | Quản lý khách hàng | Nhân viên vận hành, Admin |
+| **UC15** | Quản lý tài xế | Nhân viên vận hành, Admin |
+| **UC16** | Quản lý phương tiện | Nhân viên vận hành, Admin |
+| **UC17** | Theo dõi hoạt động vận hành | Nhân viên vận hành |
+| **UC18** | Quản lý tài khoản và phân quyền | Admin |
+| **UC19** | Xem báo cáo thống kê | Nhân viên vận hành, Admin |
+### Nhóm 1. Quản lý tài khoản
+- UC01 – Đăng nhập
+- UC02 – Quản lý thông tin cá nhân
+- UC18 – Quản lý tài khoản và phân quyền
+
+### Nhóm 2. Đặt xe và phân công tài xế
+- UC03 – Đặt xe
+- UC04 – Tìm kiếm tài xế phù hợp
+- UC05 – Phân công tài xế
+- UC06 – Nhận / từ chối chuyến
+
+### Nhóm 3. Thực hiện và theo dõi chuyến xe
+- UC07 – Thực hiện chuyến xe
+- UC08 – Theo dõi chuyến xe
+- UC13 – Hoàn tất chuyến xe
+
+### Nhóm 4. Tính cước và thanh toán
+- UC09 – Tính cước chuyến xe
+- UC10 – Thanh toán chuyến xe
+- UC11 – Xử lý thanh toán thất bại
+
+### Nhóm 5. Đánh giá
+- UC12 – Đánh giá chuyến xe
+
+### Nhóm 6. Quản lý và vận hành
+- UC14 – Quản lý khách hàng
+- UC15 – Quản lý tài xế
+- UC16 – Quản lý phương tiện
+- UC17 – Theo dõi hoạt động vận hành
+- UC19 – Xem báo cáo thống kê
+B13: AC - TIÊU CHÍ XÁC NHẬN
+
+| Mã AC | Use Case | Tiêu chí xác nhận |
+|---|---|---|
+| **AC01** | UC01 - Đăng nhập | Người dùng nhập đúng thông tin đăng nhập thì đăng nhập thành công. |
+| **AC02** | UC01 - Đăng nhập | Nhập sai thông tin thì hệ thống thông báo lỗi và không cho truy cập. |
+| **AC03** | UC03 - Đặt xe | Nhập đầy đủ điểm đón, điểm đến và loại xe thì có thể gửi yêu cầu đặt xe. |
+| **AC04** | UC03 - Đặt xe | Hệ thống kiểm tra thông tin đặt xe trước khi tạo yêu cầu. |
+| **AC05** | UC04 - Tìm kiếm tài xế | Hệ thống xác định được tài xế phù hợp. |
+| **AC06** | UC05 - Phân công tài xế | Tài xế chấp nhận thì hệ thống ghi nhận tài xế được phân công. |
+| **AC07** | UC06 - Nhận / từ chối chuyến | Tài xế có thể chấp nhận hoặc từ chối chuyến. |
+| **AC08** | UC06 - Nhận / từ chối chuyến | Từ chối hoặc không phản hồi thì hệ thống tìm tài xế khác. |
+| **AC09** | UC07 - Thực hiện chuyến xe | Tài xế cập nhật trạng thái chuyến theo đúng trình tự. |
+| **AC10** | UC08 - Theo dõi chuyến xe | Khách hàng xem được trạng thái hiện tại của chuyến xe. |
+| **AC11** | UC09 - Tính cước | Hệ thống tính và hiển thị cước chuyến xe. |
+| **AC12** | UC10 - Thanh toán | Khách hàng lựa chọn được phương thức thanh toán được hỗ trợ. |
+| **AC13** | UC10 - Thanh toán | Thanh toán thành công thì hệ thống ghi nhận giao dịch thành công. |
+| **AC14** | UC11 - Xử lý thanh toán thất bại | Thanh toán thất bại thì hệ thống thông báo và cho phép thanh toán lại theo chính sách. |
+| **AC15** | UC12 - Đánh giá chuyến xe | Chỉ được đánh giá khi chuyến xe đã hoàn tất. |
+| **AC16** | UC12 - Đánh giá chuyến xe | Hệ thống lưu điểm và nội dung đánh giá. |
+| **AC17** | UC13 - Hoàn tất chuyến xe | Hệ thống chỉ xác nhận hoàn tất khi đáp ứng điều kiện cần thiết. |
+| **AC18** | UC13 - Hoàn tất chuyến xe | Chuyến xe hoàn tất được lưu vào lịch sử. |
+| **AC19** | UC14 - Quản lý khách hàng | Người có quyền có thể quản lý thông tin khách hàng. |
+| **AC20** | UC15 - Quản lý tài xế | Người có quyền có thể quản lý thông tin tài xế. |
+| **AC21** | UC16 - Quản lý phương tiện | Người có quyền có thể quản lý thông tin phương tiện. |
+| **AC22** | UC17 - Theo dõi hoạt động vận hành | Nhân viên vận hành theo dõi được chuyến xe và tài xế. |
+| **AC23** | UC18 - Quản lý tài khoản và phân quyền | Quản trị viên quản lý được tài khoản và phân quyền. |
+| **AC24** | UC19 - Xem báo cáo thống kê | Người có quyền xem được các báo cáo thống kê của hệ thống. |
+
+B14: BẢNG TRUY VẾT AC - ACCEPTANCE CRITERIA
+
+| Mã UC | Tên Use Case | Mã AC | Acceptance Criteria |
+|---|---|---|---|
+| UC01 | Đăng nhập | AC01 | Đăng nhập thành công khi thông tin tài khoản hợp lệ |
+| UC01 | Đăng nhập | AC02 | Hiển thị thông báo lỗi khi thông tin đăng nhập không hợp lệ |
+| UC02 | Quản lý thông tin cá nhân | AC03 | Người dùng có thể xem và cập nhật thông tin cá nhân hợp lệ |
+| UC03 | Đặt xe | AC04 | Đặt xe thành công khi nhập đầy đủ thông tin chuyến đi |
+| UC03 | Đặt xe | AC05 | Hệ thống thông báo lỗi khi thông tin đặt xe không hợp lệ |
+| UC04 | Tìm kiếm tài xế phù hợp | AC06 | Hệ thống tìm được tài xế đáp ứng điều kiện phục vụ chuyến đi |
+| UC05 | Phân công tài xế | AC07 | Chuyến xe được gán cho tài xế khi tài xế chấp nhận |
+| UC06 | Nhận / từ chối chuyến | AC08 | Tài xế có thể chấp nhận hoặc từ chối chuyến |
+| UC06 | Nhận / từ chối chuyến | AC09 | Khi tài xế từ chối hoặc không phản hồi, hệ thống tiếp tục tìm tài xế khác |
+| UC07 | Thực hiện chuyến xe | AC10 | Tài xế cập nhật được trạng thái chuyến theo đúng trình tự |
+| UC08 | Theo dõi chuyến xe | AC11 | Khách hàng xem được trạng thái hiện tại của chuyến xe |
+| UC09 | Tính cước chuyến xe | AC12 | Hệ thống tính và hiển thị cước chuyến xe |
+| UC10 | Thanh toán chuyến xe | AC13 | Khách hàng lựa chọn được phương thức thanh toán |
+| UC10 | Thanh toán chuyến xe | AC14 | Giao dịch được ghi nhận thành công khi thanh toán thành công |
+| UC11 | Xử lý thanh toán thất bại | AC15 | Hệ thống thông báo khi thanh toán thất bại |
+| UC11 | Xử lý thanh toán thất bại | AC16 | Khách hàng có thể thực hiện lại thanh toán theo chính sách |
+| UC12 | Đánh giá chuyến xe | AC17 | Khách hàng chỉ được đánh giá sau khi chuyến xe hoàn tất |
+| UC12 | Đánh giá chuyến xe | AC18 | Điểm đánh giá và nhận xét được lưu thành công |
+| UC13 | Hoàn tất chuyến xe | AC19 | Chuyến xe chỉ được hoàn tất khi đáp ứng điều kiện hoàn thành |
+| UC13 | Hoàn tất chuyến xe | AC20 | Thông tin chuyến xe được lưu vào lịch sử sau khi hoàn tất |
+| UC14 | Quản lý khách hàng | AC21 | Nhân viên/Admin có thể xem và quản lý thông tin khách hàng theo quyền |
+| UC15 | Quản lý tài xế | AC22 | Nhân viên/Admin có thể quản lý thông tin và trạng thái tài xế |
+| UC16 | Quản lý phương tiện | AC23 | Nhân viên/Admin có thể quản lý thông tin phương tiện theo quyền |
+| UC17 | Theo dõi hoạt động vận hành | AC24 | Nhân viên vận hành xem được các chuyến xe và trạng thái đang hoạt động |
+| UC18 | Quản lý tài khoản và phân quyền | AC25 | Admin có thể quản lý tài khoản và phân quyền người dùng |
+| UC19 | Xem báo cáo thống kê | AC26 | Nhân viên/Admin xem được các báo cáo thống kê theo dữ liệu hệ thống |
