@@ -253,3 +253,69 @@ Tài xế đang đến điểm đón
    ↓
 Hoàn thành chuyến
 ```
+B5: THIẾT KẾ BUSINESS REQUIREMENTS KÍ HIỆU BG
+## Business Requirements – BG
+
+Business Requirement của CAB System được xác định bằng mã **BG (Business Goal/Business Requirement)**. Các BG mô tả những mục tiêu và yêu cầu ở cấp độ nghiệp vụ mà hệ thống cần đáp ứng nhằm giải quyết các vấn đề của hoạt động đặt xe hiện tại.
+
+| Mã BG | Business Requirement | Mô tả | Stakeholder liên quan | Mức độ ưu tiên |
+|:---:|---|---|---|:---:|
+| **BG01** | Xây dựng nền tảng đặt xe trực tuyến tập trung | Cho phép khách hàng thực hiện toàn bộ quy trình đặt xe trên một nền tảng thống nhất thay cho phương thức đặt xe thủ công | Ban giám đốc, Khách hàng, Tài xế | **Cao** |
+| **BG02** | Nâng cao hiệu quả phân công tài xế | Hỗ trợ xác định và phân công tài xế phù hợp dựa trên vị trí, trạng thái hoạt động và các tiêu chí vận hành | Khách hàng, Tài xế, Nhân viên vận hành | **Cao** |
+| **BG03** | Cải thiện khả năng theo dõi chuyến đi | Cho phép khách hàng và nhân viên vận hành theo dõi trạng thái chuyến đi và tình trạng tài xế trong quá trình thực hiện chuyến | Khách hàng, Tài xế, Nhân viên vận hành | **Cao** |
+| **BG04** | Quản lý tập trung thông tin chuyến đi | Tập trung dữ liệu đặt xe, chuyến đi, tài xế, khách hàng và trạng thái chuyến để thuận tiện cho việc tra cứu và quản lý | Nhân viên vận hành, CSKH, Ban giám đốc | **Cao** |
+| **BG05** | Đảm bảo tính cước và thanh toán thuận tiện | Hỗ trợ xác định chi phí chuyến đi và cung cấp các phương thức thanh toán phù hợp, bao gồm tiền mặt và thanh toán điện tử | Khách hàng, Kế toán/Tài chính | **Cao** |
+| **BG06** | Nâng cao hiệu quả quản lý và vận hành | Hỗ trợ nhân viên vận hành theo dõi chuyến đi, tài xế, phương tiện và xử lý các trường hợp phát sinh | Nhân viên vận hành, CSKH | **Cao** |
+| **BG07** | Đảm bảo thông tin được thông báo kịp thời | Cung cấp thông báo cho khách hàng và tài xế khi có thay đổi liên quan đến đặt xe, phân công, trạng thái chuyến và thanh toán | Khách hàng, Tài xế | **Cao** |
+| **BG08** | Đảm bảo an toàn và bảo mật dữ liệu | Bảo vệ thông tin cá nhân, thông tin tài xế, vị trí, giao dịch và kiểm soát quyền truy cập hệ thống | Quản trị viên, Ban giám đốc | **Cao** |
+| **BG09** | Đảm bảo hệ thống hoạt động ổn định | Đảm bảo hệ thống có khả năng hoạt động ổn định khi số lượng yêu cầu đặt xe tăng cao và khi một số dịch vụ bên ngoài gặp sự cố | Ban giám đốc, Đội ngũ kỹ thuật | **Cao** |
+| **BG10** | Hỗ trợ mở rộng hệ thống | Thiết kế hệ thống có khả năng mở rộng thêm dịch vụ, phương thức thanh toán, kênh thông báo và các thành phần kỹ thuật trong tương lai | Ban giám đốc, Đội ngũ kỹ thuật | **Trung bình** |
+| **BG11** | Hỗ trợ quản lý và ra quyết định dựa trên dữ liệu | Cung cấp báo cáo và thống kê về chuyến đi, doanh thu, tỷ lệ hoàn thành, tỷ lệ hủy và hiệu quả tài xế | Ban giám đốc, Kế toán/Tài chính, Nhân viên vận hành | **Cao** |
+| **BG12** | Nâng cao chất lượng dịch vụ | Ghi nhận đánh giá và phản hồi của khách hàng nhằm hỗ trợ doanh nghiệp theo dõi và cải thiện chất lượng dịch vụ | Khách hàng, Ban giám đốc, Nhân viên vận hành | **Trung bình** |
+## Mối quan hệ Business Requirement
+
+Business Requirement là cơ sở để xác định các yêu cầu chi tiết của hệ thống.
+
+**BG → BR → FR → Use Case → Module**
+
+Trong đó:
+
+- **BG (Business Requirement):** Doanh nghiệp cần đạt được mục tiêu gì?
+- **BR (Business Rule):** Nghiệp vụ phải tuân theo quy tắc nào?
+- **FR (Functional Requirement):** Hệ thống phải cung cấp chức năng gì?
+- **Use Case:** Actor tương tác với hệ thống như thế nào?
+- **Module:** Chức năng thuộc phân hệ nào của hệ thống?
+### Ví dụ: BG02 – Nâng cao hiệu quả phân công tài xế
+
+**BG02:** Nâng cao hiệu quả phân công tài xế.
+
+↓ 
+
+**BR02.1:** Hệ thống ưu tiên tài xế đang ở trạng thái sẵn sàng nhận chuyến.
+
+**BR02.2:** Hệ thống ưu tiên tài xế phù hợp và có vị trí gần điểm đón.
+
+**BR02.3:** Nếu tài xế được đề xuất không phản hồi hoặc từ chối, hệ thống tiếp tục tìm tài xế phù hợp khác.
+
+↓
+
+**FR02.1:** Hệ thống phải xác định danh sách tài xế phù hợp với yêu cầu đặt xe.
+
+**FR02.2:** Hệ thống phải gửi yêu cầu nhận chuyến đến tài xế được lựa chọn.
+
+**FR02.3:** Hệ thống phải tự động chuyển sang tài xế khác khi tài xế hiện tại từ chối hoặc không phản hồi.
+
+↓
+
+**Use Case:**
+- Đặt xe
+- Tìm kiếm tài xế
+- Phân công tài xế
+- Nhận chuyến
+- Từ chối chuyến
+
+↓
+
+**Module:**
+- Đặt xe & phân công tài xế
+- Quản lý tài xế & phương tiện
