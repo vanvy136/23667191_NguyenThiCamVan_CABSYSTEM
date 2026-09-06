@@ -1,5 +1,5 @@
 # CAB System – Nền tảng đặt xe
-B1: XÁC ĐỊNH STAKEHOLDER
+# B1: XÁC ĐỊNH STAKEHOLDER
 Bảng dưới đây xác định các bên liên quan chính của dự án **CAB System – Nền tảng đặt xe**, bao gồm vai trò, mối quan tâm, nhu cầu đối với hệ thống và mức độ ảnh hưởng.
 
 | STT | Stakeholder | Vai trò | Mối quan tâm / Mục tiêu | Nhu cầu đối với hệ thống | Mức độ ảnh hưởng |
@@ -17,7 +17,7 @@ Bảng dưới đây xác định các bên liên quan chính của dự án **C
 | **11** | **Business Analyst (BA)** | Phân tích và làm rõ yêu cầu | Đảm bảo yêu cầu nghiệp vụ được xác định đầy đủ, chính xác | Xác định phạm vi, stakeholder, quy trình, yêu cầu chức năng/phi chức năng, quy tắc nghiệp vụ và ngoại lệ | **Cao** |
 | **12** | **Cơ quan quản lý / pháp lý** | Giám sát việc tuân thủ quy định | Bảo vệ dữ liệu và tuân thủ các quy định liên quan | Hệ thống bảo mật, kiểm soát dữ liệu cá nhân, lưu vết thao tác và đáp ứng yêu cầu pháp lý | **Thấp – Trung bình** |
 
-B2: STAKEHOLDER MATRIX
+# B2: STAKEHOLDER MATRIX
 ## Stakeholder Matrix
 
 Stakeholder Matrix được sử dụng để phân loại các bên liên quan dựa trên hai tiêu chí:
@@ -31,7 +31,7 @@ Stakeholder Matrix được sử dụng để phân loại các bên liên quan 
 | **Power thấp** | **MONITOR**<br><br>Đội ngũ phát triển / kỹ thuật | **KEEP INFORMED**<br><br>CSKH<br>Kế toán / tài chính<br>Nhà cung cấp thanh toán<br>Nhà cung cấp thông báo |
 
 
-B3: XÁC ĐỊNH YÊU CẦU KHÁCH HÀNG THÀNH MỤC TIÊU NGHIỆP VỤ BẰNG BG 
+# B3: XÁC ĐỊNH YÊU CẦU KHÁCH HÀNG THÀNH MỤC TIÊU NGHIỆP VỤ BẰNG BG 
 ## Business Goals – Mục tiêu nghiệp vụ
 
 ### 1. Tổng quan
@@ -112,7 +112,7 @@ Cho phép doanh nghiệp bổ sung các loại dịch vụ, phương thức than
 
 ---
 
-B4: XÁC ĐỊNH MODULE
+# B4: XÁC ĐỊNH MODULE
 ## Modules – Các module của hệ thống
 
 CAB System được chia thành các module nghiệp vụ chính nhằm đảm bảo hệ thống có cấu trúc rõ ràng, dễ quản lý, phát triển và mở rộng.
@@ -225,7 +225,7 @@ Tài xế đang đến điểm đón
    ↓
 Hoàn thành chuyến
 ```
-B5: THIẾT KẾ BUSINESS REQUIREMENTS KÍ HIỆU BG
+# B5: THIẾT KẾ BUSINESS REQUIREMENTS KÍ HIỆU BG
 ## Business Requirements – BG
 
 Business Requirement của CAB System được xác định bằng mã **BG (Business Goal/Business Requirement)**. Các BG mô tả những mục tiêu và yêu cầu ở cấp độ nghiệp vụ mà hệ thống cần đáp ứng nhằm giải quyết các vấn đề của hoạt động đặt xe hiện tại.
@@ -271,7 +271,7 @@ Trong đó:
 - **Use Case:** Actor tương tác với hệ thống như thế nào?
 - **Module:** Chức năng thuộc phân hệ nào của hệ thống?
 
-B6: MÔ HÌNH HÓA NGHIỆP VỤ BẰNG BUSINESS REQUIREMENTS
+# B6: MÔ HÌNH HÓA NGHIỆP VỤ BẰNG BUSINESS REQUIREMENTS
 
 Hệ thống CAB được xây dựng xoay quanh 05 quy trình nghiệp vụ trọng tâm, bao quát luồng xử lý từ khi khách hàng đặt xe đến khi chuyến xe hoàn tất và dữ liệu được cập nhật.
 
@@ -324,7 +324,7 @@ Phân công tài xế
         v
 Thông báo khách hàng
 ```
-B7: THIẾT KẾ FUCTIONAL REQUIREMENT - YÊU CẦU CHỨC NĂNG 
+# B7: THIẾT KẾ FUCTIONAL REQUIREMENT - YÊU CẦU CHỨC NĂNG 
 
 
 ## 1. Tổng quan
@@ -349,7 +349,6 @@ Mỗi Functional Requirement được liên kết với Business Goal tương �
 
 **Mục tiêu:** Tiếp nhận yêu cầu đặt xe, tìm kiếm tài xế phù hợp và thực hiện phân công tài xế.
 
-# B3. FUNCTIONAL REQUIREMENTS (FR)
 
 ## 1. Đặt xe và phân công tài xế
 
@@ -432,7 +431,7 @@ Mỗi Functional Requirement được liên kết với Business Goal tương �
 | Hoàn tất và cập nhật dữ liệu | 7 |
 | **Tổng cộng** | **35** |
 
-B8: BUSINESS RULE - QUY ĐINH NGHIỆP VỤ
+# B8: BUSINESS RULE - QUY ĐINH NGHIỆP VỤ
 
 Quy định nghiệp vụ xác định các nguyên tắc và điều kiện mà hệ thống CAB phải tuân thủ trong quá trình xử lý đặt xe, thực hiện chuyến, thanh toán và hoàn tất chuyến xe.
 
@@ -538,7 +537,7 @@ Use Case (UC)
         v
 System Function
 ```
-B9: NGHIỆP VỤ PHI CHỨC NĂNG - NON-FUNCTIONAL REQUIREMENTS (NFR)
+# B9: NGHIỆP VỤ PHI CHỨC NĂNG - NON-FUNCTIONAL REQUIREMENTS (NFR)
 
 Các yêu cầu phi chức năng xác định các tiêu chí về chất lượng, hiệu năng, bảo mật, ổn định và khả năng mở rộng của hệ thống CAB.
 
@@ -556,7 +555,7 @@ Các yêu cầu phi chức năng xác định các tiêu chí về chất lượ
 | NFR10 | Triển khai | Hệ thống phải hỗ trợ triển khai từng phần với ảnh hưởng tối thiểu đến hoạt động hiện tại. | BG10 |
 | NFR11 | Khả năng phục hồi | Hệ thống phải có khả năng xử lý lỗi của các thành phần bên ngoài mà không làm mất dữ liệu chuyến xe. | BG09 |
 | NFR12 | Audit | Các thao tác quản trị và thao tác quan trọng phải được lưu vết. | BG08 |
-B10: THIẾT KẾ MÔ HÌNH THỰC THỂ KẾT HỢP 
+# B10: THIẾT KẾ MÔ HÌNH THỰC THỂ KẾT HỢP 
 
                          +----------------+
                          |    ACCOUNT     |
@@ -595,7 +594,7 @@ B10: THIẾT KẾ MÔ HÌNH THỰC THỂ KẾT HỢP
       
 
 
-B11: ERD
+# B11: ERD
 +------------------+
 |     ACCOUNT      |
 +------------------+
@@ -677,7 +676,7 @@ B11: ERD
 +----------------+ +----------------+
 
 
-B12: USE CASE
+# B12: USE CASE
 DANH SÁCH USE CASE
 
 | Mã UC | Tên Use Case | Actor chính |
@@ -731,7 +730,8 @@ DANH SÁCH USE CASE
 - UC16 – Quản lý phương tiện
 - UC17 – Theo dõi hoạt động vận hành
 - UC19 – Xem báo cáo thống kê
-B13: AC - TIÊU CHÍ XÁC NHẬN
+
+# B13: AC - TIÊU CHÍ XÁC NHẬN
 
 | Mã AC | Use Case | Tiêu chí xác nhận |
 |---|---|---|
@@ -760,7 +760,7 @@ B13: AC - TIÊU CHÍ XÁC NHẬN
 | **AC23** | UC18 - Quản lý tài khoản và phân quyền | Quản trị viên quản lý được tài khoản và phân quyền. |
 | **AC24** | UC19 - Xem báo cáo thống kê | Người có quyền xem được các báo cáo thống kê của hệ thống. |
 
-B14: BẢNG TRUY VẾT AC - ACCEPTANCE CRITERIA
+# B14: BẢNG TRUY VẾT AC - ACCEPTANCE CRITERIA
 
 | Mã UC | Tên Use Case | Mã AC | Acceptance Criteria |
 |---|---|---|---|
