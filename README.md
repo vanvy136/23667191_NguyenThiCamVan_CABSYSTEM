@@ -112,27 +112,6 @@ Cho phép doanh nghiệp bổ sung các loại dịch vụ, phương thức than
 
 ---
 
-## 5. Mối quan hệ giữa Business Goal và yêu cầu hệ thống
-
-```text
-YÊU CẦU KHÁCH HÀNG
-        |
-        v
-BUSINESS GOAL (BG)
-        |
-        v
-BUSINESS REQUIREMENT (BR)
-        |
-        v
-FUNCTIONAL REQUIREMENT (FR)
-        |
-        v
-USE CASE
-        |
-        v
-GIẢI PHÁP CAB SYSTEM
-
-```
 B4: XÁC ĐỊNH MODULE
 ## Modules – Các module của hệ thống
 
@@ -168,8 +147,6 @@ Module quản lý tài khoản chịu trách nhiệm xác thực và quản lý 
 - Nhân viên vận hành.
 - Quản trị viên hệ thống.
 
----
-
 #### 2. Quản lý khách hàng
 
 Module quản lý thông tin và hoạt động của khách hàng.
@@ -186,8 +163,6 @@ Module quản lý thông tin và hoạt động của khách hàng.
 - Khách hàng.
 - Nhân viên vận hành.
 - Bộ phận chăm sóc khách hàng.
-
----
 
 #### 3. Quản lý tài xế & phương tiện
 
@@ -206,8 +181,6 @@ Module quản lý thông tin tài xế, phương tiện và trạng thái hoạt
 - Tài xế.
 - Nhân viên vận hành.
 - Quản trị viên hệ thống.
-
----
 
 #### 4. Đặt xe & phân công tài xế
 
@@ -230,7 +203,6 @@ Module quản lý thông tin tài xế, phương tiện và trạng thái hoạt
 - Tài xế.
 - Nhân viên vận hành.
 
----
 
 #### 5. Quản lý chuyến đi
 
@@ -272,6 +244,19 @@ Business Requirement của CAB System được xác định bằng mã **BG (Bus
 | **BG10** | Hỗ trợ mở rộng hệ thống | Thiết kế hệ thống có khả năng mở rộng thêm dịch vụ, phương thức thanh toán, kênh thông báo và các thành phần kỹ thuật trong tương lai | Ban giám đốc, Đội ngũ kỹ thuật | **Trung bình** |
 | **BG11** | Hỗ trợ quản lý và ra quyết định dựa trên dữ liệu | Cung cấp báo cáo và thống kê về chuyến đi, doanh thu, tỷ lệ hoàn thành, tỷ lệ hủy và hiệu quả tài xế | Ban giám đốc, Kế toán/Tài chính, Nhân viên vận hành | **Cao** |
 | **BG12** | Nâng cao chất lượng dịch vụ | Ghi nhận đánh giá và phản hồi của khách hàng nhằm hỗ trợ doanh nghiệp theo dõi và cải thiện chất lượng dịch vụ | Khách hàng, Ban giám đốc, Nhân viên vận hành | **Trung bình** |
+
+### Phân loại Business Requirements
+
+Các Business Requirements của CAB System được phân thành các nhóm sau:
+
+| Nhóm | Business Requirements | Mục tiêu |
+|---|---|---|
+| **Quản lý đặt xe** | BG01, BG02, BG03 | Chuẩn hóa và nâng cao hiệu quả quy trình đặt xe và thực hiện chuyến đi |
+| **Quản lý vận hành** | BG04, BG06, BG11 | Tập trung dữ liệu, hỗ trợ vận hành và ra quyết định |
+| **Thanh toán và dịch vụ** | BG05, BG07, BG12 | Đảm bảo thanh toán thuận tiện, thông tin kịp thời và nâng cao chất lượng dịch vụ |
+| **Bảo mật và ổn định** | BG08, BG09 | Đảm bảo an toàn dữ liệu và khả năng hoạt động ổn định |
+| **Mở rộng hệ thống** | BG10 | Đảm bảo hệ thống có khả năng phát triển trong tương lai |
+
 ## Mối quan hệ Business Requirement
 
 Business Requirement là cơ sở để xác định các yêu cầu chi tiết của hệ thống.
@@ -285,37 +270,3 @@ Trong đó:
 - **FR (Functional Requirement):** Hệ thống phải cung cấp chức năng gì?
 - **Use Case:** Actor tương tác với hệ thống như thế nào?
 - **Module:** Chức năng thuộc phân hệ nào của hệ thống?
-### Ví dụ: BG02 – Nâng cao hiệu quả phân công tài xế
-
-**BG02:** Nâng cao hiệu quả phân công tài xế.
-
-↓ 
-
-**BR02.1:** Hệ thống ưu tiên tài xế đang ở trạng thái sẵn sàng nhận chuyến.
-
-**BR02.2:** Hệ thống ưu tiên tài xế phù hợp và có vị trí gần điểm đón.
-
-**BR02.3:** Nếu tài xế được đề xuất không phản hồi hoặc từ chối, hệ thống tiếp tục tìm tài xế phù hợp khác.
-
-↓
-
-**FR02.1:** Hệ thống phải xác định danh sách tài xế phù hợp với yêu cầu đặt xe.
-
-**FR02.2:** Hệ thống phải gửi yêu cầu nhận chuyến đến tài xế được lựa chọn.
-
-**FR02.3:** Hệ thống phải tự động chuyển sang tài xế khác khi tài xế hiện tại từ chối hoặc không phản hồi.
-
-↓
-
-**Use Case:**
-- Đặt xe
-- Tìm kiếm tài xế
-- Phân công tài xế
-- Nhận chuyến
-- Từ chối chuyến
-
-↓
-
-**Module:**
-- Đặt xe & phân công tài xế
-- Quản lý tài xế & phương tiện
