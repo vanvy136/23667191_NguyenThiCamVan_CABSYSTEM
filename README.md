@@ -16,3 +16,15 @@ Bảng dưới đây xác định các bên liên quan chính của dự án **C
 | **10** | **Đội ngũ phát triển / kỹ thuật** | Xây dựng và bảo trì hệ thống | Hệ thống dễ phát triển, bảo trì và mở rộng | Kiến trúc linh hoạt, các thành phần có thể mở rộng độc lập, triển khai tính năng từng phần | 🟠 **Trung bình** |
 | **11** | **Business Analyst (BA)** | Phân tích và làm rõ yêu cầu | Đảm bảo yêu cầu nghiệp vụ được xác định đầy đủ, chính xác | Xác định phạm vi, stakeholder, quy trình, yêu cầu chức năng/phi chức năng, quy tắc nghiệp vụ và ngoại lệ | 🔴 **Cao** |
 | **12** | **Cơ quan quản lý / pháp lý** | Giám sát việc tuân thủ quy định | Bảo vệ dữ liệu và tuân thủ các quy định liên quan | Hệ thống bảo mật, kiểm soát dữ liệu cá nhân, lưu vết thao tác và đáp ứng yêu cầu pháp lý | 🟡 **Thấp – Trung bình** |
+
+## 📊 Stakeholder Matrix
+
+Stakeholder Matrix được sử dụng để phân loại các bên liên quan dựa trên hai tiêu chí:
+
+- **Power:** Mức độ quyền lực / ảnh hưởng đến dự án.
+- **Interest:** Mức độ quan tâm đến hệ thống.
+
+|  | 🟡 **Interest thấp** | 🟢 **Interest cao** |
+|---|---|---|
+| 🔴 **Power cao** | **KEEP SATISFIED**<br><br>• Cơ quan quản lý / pháp lý | **MANAGE CLOSELY**<br><br>• Ban giám đốc<br>• Khách hàng<br>• Tài xế<br>• Nhân viên vận hành<br>• Quản trị viên hệ thống |
+| 🔵 **Power thấp** | **MONITOR**<br><br>• Đội ngũ phát triển / kỹ thuật | **KEEP INFORMED**<br><br>• CSKH<br>• Kế toán / tài chính<br>• Nhà cung cấp thanh toán<br>• Nhà cung cấp thông báo |
