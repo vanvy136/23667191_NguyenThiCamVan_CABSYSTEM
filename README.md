@@ -1,3 +1,4 @@
+B1: XÁC ĐỊNH STAKEHOLDER
 Bảng dưới đây xác định các bên liên quan chính của dự án **CAB System – Nền tảng đặt xe**, bao gồm vai trò, mối quan tâm, nhu cầu đối với hệ thống và mức độ ảnh hưởng.
 
 | STT | Stakeholder | Vai trò | Mối quan tâm / Mục tiêu | Nhu cầu đối với hệ thống | Mức độ ảnh hưởng |
@@ -15,6 +16,7 @@ Bảng dưới đây xác định các bên liên quan chính của dự án **C
 | **11** | **Business Analyst (BA)** | Phân tích và làm rõ yêu cầu | Đảm bảo yêu cầu nghiệp vụ được xác định đầy đủ, chính xác | Xác định phạm vi, stakeholder, quy trình, yêu cầu chức năng/phi chức năng, quy tắc nghiệp vụ và ngoại lệ | **Cao** |
 | **12** | **Cơ quan quản lý / pháp lý** | Giám sát việc tuân thủ quy định | Bảo vệ dữ liệu và tuân thủ các quy định liên quan | Hệ thống bảo mật, kiểm soát dữ liệu cá nhân, lưu vết thao tác và đáp ứng yêu cầu pháp lý | **Thấp – Trung bình** |
 
+B2: STAKEHOLDER MATRIX
 ## Stakeholder Matrix
 
 Stakeholder Matrix được sử dụng để phân loại các bên liên quan dựa trên hai tiêu chí:
@@ -28,6 +30,7 @@ Stakeholder Matrix được sử dụng để phân loại các bên liên quan 
 | **Power thấp** | **MONITOR**<br><br>Đội ngũ phát triển / kỹ thuật | **KEEP INFORMED**<br><br>CSKH<br>Kế toán / tài chính<br>Nhà cung cấp thanh toán<br>Nhà cung cấp thông báo |
 # CAB System – Nền tảng đặt xe
 
+B3: XÁC ĐỊNH YÊU CẦU KHÁCH HÀNG THÀNH MỤC TIÊU NGHIỆP VỤ BẰNG BG 
 ## Business Goals – Mục tiêu nghiệp vụ
 
 ### 1. Tổng quan
@@ -127,3 +130,125 @@ USE CASE
         |
         v
 GIẢI PHÁP CAB SYSTEM
+
+```
+B4: XÁC ĐỊNH MODULE
+## Modules – Các module của hệ thống
+
+CAB System được chia thành các module nghiệp vụ chính nhằm đảm bảo hệ thống có cấu trúc rõ ràng, dễ quản lý, phát triển và mở rộng.
+
+| STT | Module | Mô tả | Chức năng chính |
+|:---:|---|---|---|
+| **1** | **Quản lý tài khoản** | Quản lý tài khoản và thông tin người dùng | Đăng ký, đăng nhập, quản lý thông tin cá nhân, xác thực tài khoản |
+| **2** | **Quản lý khách hàng** | Quản lý thông tin và hoạt động của khách hàng | Quản lý hồ sơ, lịch sử đặt xe, lịch sử chuyến đi |
+| **3** | **Quản lý tài xế & phương tiện** | Quản lý tài xế, phương tiện và trạng thái hoạt động | Quản lý hồ sơ tài xế, thông tin xe, trạng thái hoạt động, nhận/từ chối chuyến |
+| **4** | **Đặt xe & phân công tài xế** | Tiếp nhận yêu cầu đặt xe và tìm tài xế phù hợp | Nhập điểm đón/điểm đến, chọn loại xe, tạo yêu cầu, tìm kiếm và phân công tài xế |
+| **5** | **Quản lý chuyến đi** | Quản lý toàn bộ vòng đời của chuyến xe | Theo dõi chuyến đi, cập nhật trạng thái, hoàn thành chuyến, hủy chuyến |
+| **6** | **Tính cước & thanh toán** | Tính giá chuyến và xử lý thanh toán | Tính cước, thanh toán tiền mặt, thanh toán điện tử, xử lý giao dịch thất bại |
+| **7** | **Thông báo & đánh giá** | Giao tiếp với khách hàng và tài xế trong quá trình sử dụng dịch vụ | Gửi thông báo, cập nhật trạng thái, thông báo thanh toán, đánh giá tài xế |
+| **8** | **Quản trị & vận hành** | Hỗ trợ nhân viên vận hành và quản trị hệ thống | Quản lý khách hàng, tài xế, chuyến đi, giao dịch, báo cáo, phân quyền và nhật ký hệ thống |
+
+### Chi tiết các module
+
+#### 1. Quản lý tài khoản
+
+Module quản lý tài khoản chịu trách nhiệm xác thực và quản lý thông tin người dùng trong hệ thống.
+
+**Chức năng:**
+- Đăng ký tài khoản.
+- Đăng nhập và đăng xuất.
+- Quản lý thông tin cá nhân.
+- Xác thực tài khoản.
+- Quản lý quyền truy cập theo vai trò.
+
+**Actor liên quan:**
+- Khách hàng.
+- Tài xế.
+- Nhân viên vận hành.
+- Quản trị viên hệ thống.
+
+---
+
+#### 2. Quản lý khách hàng
+
+Module quản lý thông tin và hoạt động của khách hàng.
+
+**Chức năng:**
+- Quản lý hồ sơ khách hàng.
+- Cập nhật thông tin cá nhân.
+- Xem lịch sử đặt xe.
+- Xem lịch sử chuyến đi.
+- Xem thông tin thanh toán và giao dịch.
+- Quản lý đánh giá và phản hồi.
+
+**Actor liên quan:**
+- Khách hàng.
+- Nhân viên vận hành.
+- Bộ phận chăm sóc khách hàng.
+
+---
+
+#### 3. Quản lý tài xế & phương tiện
+
+Module quản lý thông tin tài xế, phương tiện và trạng thái hoạt động.
+
+**Chức năng:**
+- Đăng ký hoặc tạo tài khoản tài xế.
+- Quản lý hồ sơ tài xế.
+- Quản lý thông tin phương tiện.
+- Cập nhật trạng thái hoạt động.
+- Xác định vị trí tài xế.
+- Nhận hoặc từ chối chuyến.
+- Theo dõi hiệu quả hoạt động của tài xế.
+
+**Actor liên quan:**
+- Tài xế.
+- Nhân viên vận hành.
+- Quản trị viên hệ thống.
+
+---
+
+#### 4. Đặt xe & phân công tài xế
+
+Đây là module trung tâm của CAB System, xử lý yêu cầu đặt xe và phân công tài xế.
+
+**Chức năng:**
+- Nhập điểm đón.
+- Nhập điểm đến.
+- Lựa chọn loại xe.
+- Tạo yêu cầu đặt xe.
+- Tìm kiếm tài xế phù hợp.
+- Ưu tiên tài xế phù hợp và ở gần.
+- Gửi yêu cầu đến tài xế.
+- Xử lý trường hợp tài xế từ chối hoặc không phản hồi.
+- Tiếp tục tìm tài xế khác.
+- Thông báo cho khách hàng khi không tìm được tài xế.
+
+**Actor liên quan:**
+- Khách hàng.
+- Tài xế.
+- Nhân viên vận hành.
+
+---
+
+#### 5. Quản lý chuyến đi
+
+Module quản lý toàn bộ vòng đời của một chuyến xe từ khi tạo yêu cầu đến khi hoàn thành.
+
+**Các trạng thái chính:**
+
+```text
+Đặt xe
+   ↓
+Tìm tài xế
+   ↓
+Tài xế được phân công
+   ↓
+Tài xế đang đến điểm đón
+   ↓
+Đã đón khách
+   ↓
+Đang di chuyển
+   ↓
+Hoàn thành chuyến
+```
