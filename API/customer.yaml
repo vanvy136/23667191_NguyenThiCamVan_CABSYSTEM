@@ -1,0 +1,148 @@
+openapi: 3.0.3
+
+info:
+  title: CAB System - Customer API
+  description: API quản lý khách hàng
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8080/api
+
+tags:
+  - name: Customer
+    description: Quản lý khách hàng
+
+paths:
+
+  /customers:
+    get:
+      tags:
+        - Customer
+      summary: Xem danh sách khách hàng
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+
+        - name: size
+          in: query
+          schema:
+            type: integer
+            default: 20
+
+      responses:
+        '200':
+          description: Danh sách khách hàng
+
+  /customers/{customerId}:
+    get:
+      tags:
+        - Customer
+      summary: Xem thông tin khách hàng
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - $ref: '#/components/parameters/CustomerId'
+
+      responses:
+        '200':
+          description: Thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+
+        '404':
+          description: Không tìm thấy khách hàng
+
+    put:
+      tags:
+        - Customer
+      summary: Cập nhật thông tin khách hàng
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - $ref: '#/components/parameters/CustomerId'
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerUpdateRequest'
+
+      responses:
+        '200':
+          description: Cập nhật thành công
+
+  /customers/{customerId}/bookings:
+    get:
+      tags:
+        - Customer
+      summary: Xem lịch sử đặt xe của khách hàng
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - $ref: '#/components/parameters/CustomerId'
+
+      responses:
+        '200':
+          description: Danh sách lịch sử đặt xe
+
+components:
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  parameters:
+
+    CustomerId:
+      name: customerId
+      in: path
+      required: true
+      schema:
+        type: integer
+        example: 1001
+
+  schemas:
+
+    Customer:
+      type: object
+      properties:
+        customerId:
+          type: integer
+        accountId:
+          type: integer
+        fullName:
+          type: string
+        phone:
+          type: string
+        email:
+          type: string
+          format: email
+        address:
+          type: string
+
+    CustomerUpdateRequest:
+      type: object
+      properties:
+        fullName:
+          type: string
+        phone:
+          type: string
+        email:
+          type: string
+          format: email
+        address:
+          type: string
