@@ -1,0 +1,240 @@
+openapi: 3.0.3
+
+info:
+  title: CAB System - Booking & Assignment API
+  description: API đặt xe và phân công tài xế
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8080/api
+
+tags:
+  - name: Booking
+    description: Nghiệp vụ đặt xe
+  - name: Driver Assignment
+    description: Nghiệp vụ tìm kiếm và phân công tài xế
+
+paths:
+
+  /bookings:
+    post:
+      tags:
+        - Booking
+      summary: Đặt xe
+      operationId: createBooking
+      security:
+        - bearerAuth: []
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookingRequest'
+
+      responses:
+        '201':
+          description: Đặt xe thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Booking'
+
+        '400':
+          description: Dữ liệu không hợp lệ
+
+    get:
+      tags:
+        - Booking
+      summary: Xem danh sách đặt xe
+      security:
+        - bearerAuth: []
+
+      responses:
+        '200':
+          description: Danh sách đặt xe
+
+  /bookings/{bookingId}:
+    get:
+      tags:
+        - Booking
+      summary: Xem chi tiết đặt xe
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - $ref: '#/components/parameters/BookingId'
+
+      responses:
+        '200':
+          description: Thành công
+
+        '404':
+          description: Không tìm thấy booking
+
+  /bookings/{bookingId}/cancel:
+    put:
+      tags:
+        - Booking
+      summary: Hủy đặt xe
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - $ref: '#/components/parameters/BookingId'
+
+      responses:
+        '200':
+          description: Hủy đặt xe thành công
+
+        '400':
+          description: Không thể hủy booking
+
+  /bookings/{bookingId}/drivers:
+    get:
+      tags:
+        - Driver Assignment
+      summary: Tìm tài xế phù hợp
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - $ref: '#/components/parameters/BookingId'
+
+      responses:
+        '200':
+          description: Danh sách tài xế phù hợp
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DriverCandidate'
+
+  /bookings/{bookingId}/assign:
+    post:
+      tags:
+        - Driver Assignment
+      summary: Phân công tài xế
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - $ref: '#/components/parameters/BookingId'
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - driverId
+              properties:
+                driverId:
+                  type: integer
+                  example: 2001
+
+      responses:
+        '200':
+          description: Phân công tài xế thành công
+
+        '400':
+          description: Tài xế không khả dụng
+
+  /bookings/{bookingId}/assignment:
+    get:
+      tags:
+        - Driver Assignment
+      summary: Xem thông tin phân công
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - $ref: '#/components/parameters/BookingId'
+
+      responses:
+        '200':
+          description: Thành công
+
+components:
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  parameters:
+
+    BookingId:
+      name: bookingId
+      in: path
+      required: true
+      schema:
+        type: integer
+
+  schemas:
+
+    BookingRequest:
+      type: object
+      required:
+        - pickupLocation
+        - destination
+        - vehicleType
+      properties:
+        pickupLocation:
+          type: string
+          example: 123 Nguyễn Huệ, Quận 1
+        destination:
+          type: string
+          example: 456 Điện Biên Phủ, Bình Thạnh
+        vehicleType:
+          type: string
+          enum:
+            - MOTORBIKE
+            - CAR
+        note:
+          type: string
+
+    Booking:
+      type: object
+      properties:
+        bookingId:
+          type: integer
+        customerId:
+          type: integer
+        pickupLocation:
+          type: string
+        destination:
+          type: string
+        vehicleType:
+          type: string
+        status:
+          type: string
+          enum:
+            - PENDING
+            - ASSIGNED
+            - ACCEPTED
+            - CANCELLED
+            - COMPLETED
+        createdAt:
+          type: string
+          format: date-time
+
+    DriverCandidate:
+      type: object
+      properties:
+        driverId:
+          type: integer
+        driverName:
+          type: string
+        distance:
+          type: number
+          format: double
+        rating:
+          type: number
+          format: double
+        status:
+          type: string
+          example: AVAILABLE
