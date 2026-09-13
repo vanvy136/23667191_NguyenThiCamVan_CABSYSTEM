@@ -1,0 +1,167 @@
+openapi: 3.0.3
+
+info:
+  title: CAB System - Operation & Report API
+  description: API vận hành và báo cáo thống kê
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8080/api
+
+tags:
+  - name: Operation
+    description: Quản lý vận hành
+  - name: Report
+    description: Báo cáo thống kê
+
+paths:
+
+  /operations/dashboard:
+    get:
+      tags:
+        - Operation
+      summary: Xem dashboard vận hành
+      security:
+        - bearerAuth: []
+
+      responses:
+        '200':
+          description: Dashboard vận hành
+
+  /operations/bookings:
+    get:
+      tags:
+        - Operation
+      summary: Theo dõi hoạt động đặt xe
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - $ref: '#/components/parameters/FromDate'
+        - $ref: '#/components/parameters/ToDate'
+
+      responses:
+        '200':
+          description: Danh sách hoạt động đặt xe
+
+  /operations/trips:
+    get:
+      tags:
+        - Operation
+      summary: Theo dõi chuyến xe
+      security:
+        - bearerAuth: []
+
+      responses:
+        '200':
+          description: Danh sách chuyến xe
+
+  /operations/drivers:
+    get:
+      tags:
+        - Operation
+      summary: Theo dõi hoạt động tài xế
+      security:
+        - bearerAuth: []
+
+      responses:
+        '200':
+          description: Danh sách tài xế
+
+  /reports/overview:
+    get:
+      tags:
+        - Report
+      summary: Báo cáo tổng quan
+      security:
+        - bearerAuth: []
+
+      responses:
+        '200':
+          description: Báo cáo tổng quan
+
+  /reports/bookings:
+    get:
+      tags:
+        - Report
+      summary: Thống kê đặt xe
+      security:
+        - bearerAuth: []
+
+      responses:
+        '200':
+          description: Thống kê đặt xe
+
+  /reports/trips:
+    get:
+      tags:
+        - Report
+      summary: Thống kê chuyến xe
+      security:
+        - bearerAuth: []
+
+      responses:
+        '200':
+          description: Thống kê chuyến xe
+
+  /reports/revenue:
+    get:
+      tags:
+        - Report
+      summary: Thống kê doanh thu
+      security:
+        - bearerAuth: []
+
+      responses:
+        '200':
+          description: Thống kê doanh thu
+
+  /reports/drivers:
+    get:
+      tags:
+        - Report
+      summary: Thống kê tài xế
+      security:
+        - bearerAuth: []
+
+      responses:
+        '200':
+          description: Thống kê tài xế
+
+  /reports/customers:
+    get:
+      tags:
+        - Report
+      summary: Thống kê khách hàng
+      security:
+        - bearerAuth: []
+
+      responses:
+        '200':
+          description: Thống kê khách hàng
+
+components:
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  parameters:
+
+    FromDate:
+      name: fromDate
+      in: query
+      schema:
+        type: string
+        format: date
+      example: 2026-09-01
+
+    ToDate:
+      name: toDate
+      in: query
+      schema:
+        type: string
+        format: date
+      example: 2026-09-30
