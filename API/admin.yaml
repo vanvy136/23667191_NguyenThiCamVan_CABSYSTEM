@@ -1,0 +1,268 @@
+openapi: 3.0.3
+
+info:
+  title: CAB System - Administration API
+  description: API quản trị hệ thống CAB
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8080/api
+
+tags:
+  - name: Administration
+    description: Quản trị hệ thống
+  - name: Role
+    description: Quản lý vai trò và phân quyền
+
+paths:
+
+  /admin/accounts:
+    get:
+      tags:
+        - Administration
+      summary: Xem danh sách tài khoản
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - name: role
+          in: query
+          schema:
+            type: string
+            enum:
+              - CUSTOMER
+              - DRIVER
+              - OPERATOR
+              - ADMIN
+
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum:
+              - ACTIVE
+              - LOCKED
+
+      responses:
+        '200':
+          description: Danh sách tài khoản
+
+        '403':
+          description: Không có quyền truy cập
+
+  /admin/accounts/{accountId}:
+    get:
+      tags:
+        - Administration
+      summary: Xem chi tiết tài khoản
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+
+      responses:
+        '200':
+          description: Thông tin tài khoản
+
+        '404':
+          description: Không tìm thấy tài khoản
+
+    put:
+      tags:
+        - Administration
+      summary: Cập nhật tài khoản
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountUpdateRequest'
+
+      responses:
+        '200':
+          description: Cập nhật thành công
+
+  /admin/accounts/{accountId}/status:
+    put:
+      tags:
+        - Administration
+      summary: Khóa hoặc mở khóa tài khoản
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - status
+              properties:
+                status:
+                  type: string
+                  enum:
+                    - ACTIVE
+                    - LOCKED
+
+      responses:
+        '200':
+          description: Cập nhật trạng thái thành công
+
+        '403':
+          description: Không có quyền thực hiện
+
+  /admin/roles:
+    get:
+      tags:
+        - Role
+      summary: Xem danh sách vai trò
+      security:
+        - bearerAuth: []
+
+      responses:
+        '200':
+          description: Danh sách vai trò
+
+    post:
+      tags:
+        - Role
+      summary: Tạo vai trò
+      security:
+        - bearerAuth: []
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RoleRequest'
+
+      responses:
+        '201':
+          description: Tạo vai trò thành công
+
+  /admin/roles/{roleId}:
+    put:
+      tags:
+        - Role
+      summary: Cập nhật vai trò
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - $ref: '#/components/parameters/RoleId'
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RoleRequest'
+
+      responses:
+        '200':
+          description: Cập nhật vai trò thành công
+
+    delete:
+      tags:
+        - Role
+      summary: Xóa vai trò
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - $ref: '#/components/parameters/RoleId'
+
+      responses:
+        '204':
+          description: Xóa vai trò thành công
+
+  /admin/accounts/{accountId}/roles:
+    put:
+      tags:
+        - Role
+      summary: Phân quyền cho tài khoản
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - roleId
+              properties:
+                roleId:
+                  type: integer
+                  example: 2
+
+      responses:
+        '200':
+          description: Phân quyền thành công
+
+components:
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  parameters:
+
+    AccountId:
+      name: accountId
+      in: path
+      required: true
+      schema:
+        type: integer
+        example: 1001
+
+    RoleId:
+      name: roleId
+      in: path
+      required: true
+      schema:
+        type: integer
+        example: 2
+
+  schemas:
+
+    AccountUpdateRequest:
+      type: object
+      properties:
+        username:
+          type: string
+        status:
+          type: string
+          enum:
+            - ACTIVE
+            - LOCKED
+
+    RoleRequest:
+      type: object
+      required:
+        - roleName
+      properties:
+        roleName:
+          type: string
+          example: OPERATOR
+        description:
+          type: string
+          example: Nhân viên vận hành
