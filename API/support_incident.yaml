@@ -1,0 +1,454 @@
+openapi: 3.0.3
+
+info:
+  title: CAB System - Support & Incident API
+  description: API hỗ trợ khách hàng và quản lý sự cố
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8080/api
+
+tags:
+  - name: Support
+    description: Hỗ trợ khách hàng
+  - name: Incident
+    description: Quản lý sự cố
+
+paths:
+
+  /support/tickets:
+    post:
+      tags:
+        - Support
+      summary: Tạo yêu cầu hỗ trợ
+      operationId: createSupportTicket
+      security:
+        - bearerAuth: []
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SupportTicketRequest'
+
+      responses:
+        '201':
+          description: Tạo yêu cầu hỗ trợ thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SupportTicket'
+
+        '400':
+          description: Dữ liệu không hợp lệ
+
+    get:
+      tags:
+        - Support
+      summary: Xem danh sách yêu cầu hỗ trợ
+      operationId: getSupportTickets
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum:
+              - OPEN
+              - PROCESSING
+              - RESOLVED
+              - CLOSED
+
+        - name: priority
+          in: query
+          schema:
+            type: string
+            enum:
+              - LOW
+              - MEDIUM
+              - HIGH
+              - URGENT
+
+      responses:
+        '200':
+          description: Danh sách yêu cầu hỗ trợ
+
+  /support/tickets/{ticketId}:
+    get:
+      tags:
+        - Support
+      summary: Xem chi tiết yêu cầu hỗ trợ
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - $ref: '#/components/parameters/TicketId'
+
+      responses:
+        '200':
+          description: Thông tin yêu cầu hỗ trợ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SupportTicket'
+
+        '404':
+          description: Không tìm thấy yêu cầu hỗ trợ
+
+  /support/tickets/{ticketId}/assign:
+    put:
+      tags:
+        - Support
+      summary: Phân công nhân viên xử lý
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - $ref: '#/components/parameters/TicketId'
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - staffId
+              properties:
+                staffId:
+                  type: integer
+                  example: 3001
+
+      responses:
+        '200':
+          description: Phân công thành công
+
+  /support/tickets/{ticketId}/status:
+    put:
+      tags:
+        - Support
+      summary: Cập nhật trạng thái yêu cầu
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - $ref: '#/components/parameters/TicketId'
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - status
+              properties:
+                status:
+                  type: string
+                  enum:
+                    - OPEN
+                    - PROCESSING
+                    - RESOLVED
+                    - CLOSED
+
+      responses:
+        '200':
+          description: Cập nhật trạng thái thành công
+
+  /support/tickets/{ticketId}/reply:
+    post:
+      tags:
+        - Support
+      summary: Phản hồi yêu cầu hỗ trợ
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - $ref: '#/components/parameters/TicketId'
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - message
+              properties:
+                message:
+                  type: string
+                  example: Yêu cầu của quý khách đang được xử lý.
+
+      responses:
+        '201':
+          description: Gửi phản hồi thành công
+
+  /incidents:
+    post:
+      tags:
+        - Incident
+      summary: Ghi nhận sự cố
+      operationId: createIncident
+      security:
+        - bearerAuth: []
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IncidentRequest'
+
+      responses:
+        '201':
+          description: Ghi nhận sự cố thành công
+
+    get:
+      tags:
+        - Incident
+      summary: Xem danh sách sự cố
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - name: type
+          in: query
+          schema:
+            type: string
+            enum:
+              - TRIP
+              - DRIVER
+              - VEHICLE
+              - PAYMENT
+              - SYSTEM
+              - CUSTOMER
+
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum:
+              - OPEN
+              - PROCESSING
+              - RESOLVED
+              - CLOSED
+
+      responses:
+        '200':
+          description: Danh sách sự cố
+
+  /incidents/{incidentId}:
+    get:
+      tags:
+        - Incident
+      summary: Xem chi tiết sự cố
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - $ref: '#/components/parameters/IncidentId'
+
+      responses:
+        '200':
+          description: Chi tiết sự cố
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Incident'
+
+        '404':
+          description: Không tìm thấy sự cố
+
+  /incidents/{incidentId}/status:
+    put:
+      tags:
+        - Incident
+      summary: Cập nhật trạng thái sự cố
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - $ref: '#/components/parameters/IncidentId'
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - status
+              properties:
+                status:
+                  type: string
+                  enum:
+                    - OPEN
+                    - PROCESSING
+                    - RESOLVED
+                    - CLOSED
+                resolution:
+                  type: string
+                  example: Đã liên hệ tài xế và xử lý sự cố.
+
+      responses:
+        '200':
+          description: Cập nhật sự cố thành công
+
+components:
+
+  securitySchemes:
+
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  parameters:
+
+    TicketId:
+      name: ticketId
+      in: path
+      required: true
+      schema:
+        type: integer
+        example: 7001
+
+    IncidentId:
+      name: incidentId
+      in: path
+      required: true
+      schema:
+        type: integer
+        example: 8001
+
+  schemas:
+
+    SupportTicketRequest:
+      type: object
+      required:
+        - subject
+        - description
+      properties:
+        subject:
+          type: string
+          example: Không tìm thấy tài xế
+        description:
+          type: string
+          example: Tôi đã đặt xe nhưng chưa được tài xế nhận chuyến.
+        priority:
+          type: string
+          enum:
+            - LOW
+            - MEDIUM
+            - HIGH
+            - URGENT
+          default: MEDIUM
+        bookingId:
+          type: integer
+          nullable: true
+          example: 5001
+
+    SupportTicket:
+      type: object
+      properties:
+        ticketId:
+          type: integer
+        customerId:
+          type: integer
+        staffId:
+          type: integer
+          nullable: true
+        bookingId:
+          type: integer
+          nullable: true
+        subject:
+          type: string
+        description:
+          type: string
+        priority:
+          type: string
+        status:
+          type: string
+          enum:
+            - OPEN
+            - PROCESSING
+            - RESOLVED
+            - CLOSED
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+
+    IncidentRequest:
+      type: object
+      required:
+        - type
+        - description
+      properties:
+        type:
+          type: string
+          enum:
+            - TRIP
+            - DRIVER
+            - VEHICLE
+            - PAYMENT
+            - SYSTEM
+            - CUSTOMER
+        description:
+          type: string
+          example: Tài xế không đến đúng địa điểm đón khách.
+        tripId:
+          type: integer
+          nullable: true
+        bookingId:
+          type: integer
+          nullable: true
+        priority:
+          type: string
+          enum:
+            - LOW
+            - MEDIUM
+            - HIGH
+            - URGENT
+
+    Incident:
+      type: object
+      properties:
+        incidentId:
+          type: integer
+        type:
+          type: string
+        description:
+          type: string
+        tripId:
+          type: integer
+          nullable: true
+        bookingId:
+          type: integer
+          nullable: true
+        reportedBy:
+          type: integer
+        priority:
+          type: string
+        status:
+          type: string
+          enum:
+            - OPEN
+            - PROCESSING
+            - RESOLVED
+            - CLOSED
+        resolution:
+          type: string
+          nullable: true
+        createdAt:
+          type: string
+          format: date-time
+        resolvedAt:
+          type: string
+          format: date-time
+          nullable: true
