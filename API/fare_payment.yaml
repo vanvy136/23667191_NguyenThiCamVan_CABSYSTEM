@@ -1,0 +1,168 @@
+openapi: 3.0.3
+
+info:
+  title: CAB System - Fare & Payment API
+  description: API tính cước và thanh toán
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8080/api
+
+tags:
+  - name: Fare
+    description: Tính cước
+  - name: Payment
+    description: Thanh toán
+
+paths:
+
+  /trips/{tripId}/fare/calculate:
+    post:
+      tags:
+        - Fare
+      summary: Tính cước chuyến xe
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - $ref: '#/components/parameters/TripId'
+
+      responses:
+        '200':
+          description: Tính cước thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fare'
+
+  /trips/{tripId}/fare:
+    get:
+      tags:
+        - Fare
+      summary: Xem thông tin cước
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - $ref: '#/components/parameters/TripId'
+
+      responses:
+        '200':
+          description: Thành công
+
+  /payments:
+    post:
+      tags:
+        - Payment
+      summary: Thanh toán chuyến xe
+      security:
+        - bearerAuth: []
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentRequest'
+
+      responses:
+        '201':
+          description: Tạo giao dịch thanh toán thành công
+
+        '400':
+          description: Thanh toán thất bại
+
+  /payments/{paymentId}:
+    get:
+      tags:
+        - Payment
+      summary: Xem giao dịch thanh toán
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - $ref: '#/components/parameters/PaymentId'
+
+      responses:
+        '200':
+          description: Thành công
+
+  /payments/{paymentId}/retry:
+    post:
+      tags:
+        - Payment
+      summary: Thanh toán lại
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - $ref: '#/components/parameters/PaymentId'
+
+      responses:
+        '200':
+          description: Thanh toán lại thành công
+
+        '400':
+          description: Thanh toán lại thất bại
+
+components:
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  parameters:
+
+    TripId:
+      name: tripId
+      in: path
+      required: true
+      schema:
+        type: integer
+
+    PaymentId:
+      name: paymentId
+      in: path
+      required: true
+      schema:
+        type: integer
+
+  schemas:
+
+    Fare:
+      type: object
+      properties:
+        tripId:
+          type: integer
+        baseFare:
+          type: number
+          format: double
+        distanceFare:
+          type: number
+          format: double
+        timeFare:
+          type: number
+          format: double
+        surcharge:
+          type: number
+          format: double
+        totalFare:
+          type: number
+          format: double
+
+    PaymentRequest:
+      type: object
+      required:
+        - tripId
+        - paymentMethod
+      properties:
+        tripId:
+          type: integer
+        paymentMethod:
+          type: string
+          enum:
+            - CASH
+            - CARD
+            - E_WALLET
