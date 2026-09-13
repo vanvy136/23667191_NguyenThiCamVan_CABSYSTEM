@@ -1,0 +1,181 @@
+openapi: 3.0.3
+
+info:
+  title: CAB System - Trip & Tracking API
+  description: API quản lý và theo dõi chuyến xe
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8080/api
+
+tags:
+  - name: Trip
+    description: Quản lý chuyến xe
+  - name: Tracking
+    description: Theo dõi chuyến xe
+
+paths:
+
+  /bookings/{bookingId}/accept:
+    post:
+      tags:
+        - Trip
+      summary: Tài xế nhận chuyến
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - $ref: '#/components/parameters/BookingId'
+
+      responses:
+        '200':
+          description: Nhận chuyến thành công
+
+  /bookings/{bookingId}/reject:
+    post:
+      tags:
+        - Trip
+      summary: Tài xế từ chối chuyến
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - $ref: '#/components/parameters/BookingId'
+
+      responses:
+        '200':
+          description: Từ chối chuyến thành công
+
+  /trips/{tripId}:
+    get:
+      tags:
+        - Trip
+      summary: Xem thông tin chuyến xe
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - $ref: '#/components/parameters/TripId'
+
+      responses:
+        '200':
+          description: Thành công
+
+  /trips/{tripId}/status:
+    put:
+      tags:
+        - Trip
+      summary: Cập nhật trạng thái chuyến
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - $ref: '#/components/parameters/TripId'
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - status
+              properties:
+                status:
+                  type: string
+                  enum:
+                    - DRIVER_ARRIVING
+                    - PICKED_UP
+                    - IN_PROGRESS
+                    - COMPLETED
+                    - CANCELLED
+
+      responses:
+        '200':
+          description: Cập nhật thành công
+
+  /trips/{tripId}/complete:
+    put:
+      tags:
+        - Trip
+      summary: Hoàn tất chuyến xe
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - $ref: '#/components/parameters/TripId'
+
+      responses:
+        '200':
+          description: Hoàn tất chuyến xe thành công
+
+  /trips/{tripId}/tracking:
+    get:
+      tags:
+        - Tracking
+      summary: Theo dõi vị trí chuyến xe
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - $ref: '#/components/parameters/TripId'
+
+      responses:
+        '200':
+          description: Thông tin vị trí hiện tại
+
+  /trips/{tripId}/location:
+    put:
+      tags:
+        - Tracking
+      summary: Cập nhật vị trí tài xế
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - $ref: '#/components/parameters/TripId'
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - latitude
+                - longitude
+              properties:
+                latitude:
+                  type: number
+                  format: double
+                longitude:
+                  type: number
+                  format: double
+
+      responses:
+        '200':
+          description: Cập nhật vị trí thành công
+
+components:
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  parameters:
+
+    BookingId:
+      name: bookingId
+      in: path
+      required: true
+      schema:
+        type: integer
+
+    TripId:
+      name: tripId
+      in: path
+      required: true
+      schema:
+        type: integer
