@@ -1,0 +1,231 @@
+openapi: 3.0.3
+
+info:
+  title: CAB System - Driver & Vehicle API
+  description: API quản lý tài xế và phương tiện
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8080/api
+
+tags:
+  - name: Driver
+    description: Quản lý tài xế
+  - name: Vehicle
+    description: Quản lý phương tiện
+
+paths:
+
+  /drivers:
+    get:
+      tags:
+        - Driver
+      summary: Xem danh sách tài xế
+      security:
+        - bearerAuth: []
+
+      responses:
+        '200':
+          description: Danh sách tài xế
+
+  /drivers/{driverId}:
+    get:
+      tags:
+        - Driver
+      summary: Xem thông tin tài xế
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - $ref: '#/components/parameters/DriverId'
+
+      responses:
+        '200':
+          description: Thành công
+
+    put:
+      tags:
+        - Driver
+      summary: Cập nhật thông tin tài xế
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - $ref: '#/components/parameters/DriverId'
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DriverUpdateRequest'
+
+      responses:
+        '200':
+          description: Cập nhật thành công
+
+  /drivers/{driverId}/status:
+    put:
+      tags:
+        - Driver
+      summary: Cập nhật trạng thái tài xế
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - $ref: '#/components/parameters/DriverId'
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - status
+              properties:
+                status:
+                  type: string
+                  enum:
+                    - AVAILABLE
+                    - BUSY
+                    - OFFLINE
+
+      responses:
+        '200':
+          description: Cập nhật trạng thái thành công
+
+  /vehicles:
+    get:
+      tags:
+        - Vehicle
+      summary: Xem danh sách phương tiện
+      security:
+        - bearerAuth: []
+
+      responses:
+        '200':
+          description: Danh sách phương tiện
+
+    post:
+      tags:
+        - Vehicle
+      summary: Thêm phương tiện
+      security:
+        - bearerAuth: []
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VehicleRequest'
+
+      responses:
+        '201':
+          description: Thêm phương tiện thành công
+
+  /vehicles/{vehicleId}:
+    get:
+      tags:
+        - Vehicle
+      summary: Xem thông tin phương tiện
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - $ref: '#/components/parameters/VehicleId'
+
+      responses:
+        '200':
+          description: Thành công
+
+    put:
+      tags:
+        - Vehicle
+      summary: Cập nhật phương tiện
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - $ref: '#/components/parameters/VehicleId'
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VehicleRequest'
+
+      responses:
+        '200':
+          description: Cập nhật thành công
+
+    delete:
+      tags:
+        - Vehicle
+      summary: Xóa phương tiện
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - $ref: '#/components/parameters/VehicleId'
+
+      responses:
+        '204':
+          description: Xóa thành công
+
+components:
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  parameters:
+
+    DriverId:
+      name: driverId
+      in: path
+      required: true
+      schema:
+        type: integer
+
+    VehicleId:
+      name: vehicleId
+      in: path
+      required: true
+      schema:
+        type: integer
+
+  schemas:
+
+    DriverUpdateRequest:
+      type: object
+      properties:
+        fullName:
+          type: string
+        phone:
+          type: string
+        licenseNumber:
+          type: string
+
+    VehicleRequest:
+      type: object
+      required:
+        - licensePlate
+        - vehicleType
+      properties:
+        licensePlate:
+          type: string
+          example: 51A-12345
+        vehicleType:
+          type: string
+          enum:
+            - MOTORBIKE
+            - CAR
+        brand:
+          type: string
+        model:
+          type: string
